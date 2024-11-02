@@ -7,8 +7,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.StanceStrings;
 import com.megacrit.cardcrawl.stances.AbstractStance;
 import demoMod.twin.TwinElementalMod;
-import demoMod.twin.actions.AppendAnimationAction;
-import demoMod.twin.actions.ChangeAnimationAction;
 import demoMod.twin.actions.SwitchLeaderAction;
 import demoMod.twin.cards.twin.AbstractTwinCard;
 import demoMod.twin.characters.ZetsuEnnNoTwins;
@@ -34,11 +32,8 @@ public class Freeze extends AbstractStance {
     public void onEnterStance() {
         AbstractPlayer p = AbstractDungeon.player;
         if (p instanceof ZetsuEnnNoTwins) {
-            AbstractDungeon.actionManager.addToBottom(new ChangeAnimationAction(false, "fire_off"));
-            AbstractDungeon.actionManager.addToBottom(new AppendAnimationAction("fire_change_ice", false));
-            AbstractDungeon.actionManager.addToBottom(new AppendAnimationAction("fire_off_idle", false));
-            AbstractDungeon.actionManager.addToBottom(new AppendAnimationAction("ice_on", false));
-            AbstractDungeon.actionManager.addToBottom(new AppendAnimationAction("ice_idle", true));
+            AbstractDungeon.player.state.setAnimation(0, "fire_change_ice", false);
+            AbstractDungeon.player.state.addAnimation(0, "ice_idle", true, 0.0F);
         }
 
         SwitchLeaderAction.updateTwinCardBackground(p.drawPile);

@@ -51,6 +51,7 @@ public class AbstractPlayerPatch {
                     }
                 }
                 monopoly.cardSave.clear();
+                MultiCardPreview.clear(monopoly);
             });
             monopolies = p.drawPile.group.stream().filter(card -> card instanceof Monopoly).collect(Collectors.toList());
             monopolies.forEach(card -> {

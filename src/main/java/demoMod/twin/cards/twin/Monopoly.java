@@ -63,6 +63,14 @@ public class Monopoly extends AbstractTwinCard implements CustomSavable<Map<Stri
                     if (card.uuid.equals(uuid) && card instanceof Monopoly) {
                         Monopoly monopoly = (Monopoly) card;
                         monopoly.cardSave.putAll(cardSave);
+                        for (Map.Entry<String, List<Integer>> e : cardSave.entrySet()) {
+                            AbstractCard cardsToPreview = CardLibrary.getCard(e.getKey());
+                            if (cardsToPreview == null) {
+                                cardsToPreview = new Madness();
+                            }
+                            MultiCardPreview.add(monopoly, cardsToPreview.makeCopy());
+                            break;
+                        }
                         break;
                     }
                 }
@@ -73,14 +81,6 @@ public class Monopoly extends AbstractTwinCard implements CustomSavable<Map<Stri
 
     @Override
     public Map<String, List<Integer>> onSave() {
-        for (Map.Entry<String, List<Integer>> e : cardSave.entrySet()) {
-            AbstractCard cardsToPreview = CardLibrary.getCard(e.getKey());
-            if (cardsToPreview == null) {
-                cardsToPreview = new Madness();
-            }
-            MultiCardPreview.add(this, cardsToPreview.makeCopy());
-            break;
-        }
         return cardSave;
     }
 
