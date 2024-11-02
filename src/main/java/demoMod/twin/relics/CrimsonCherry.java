@@ -1,6 +1,7 @@
 package demoMod.twin.relics;
 
 import basemod.abstracts.CustomRelic;
+import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -8,9 +9,10 @@ import demoMod.twin.TwinElementalMod;
 
 public class CrimsonCherry extends CustomRelic {
     public static final String ID = TwinElementalMod.makeID("CrimsonCherry");
+    public static final Texture IMG = new Texture(TwinElementalMod.getResourcePath("relics/crimsonCherry.png"));
 
     public CrimsonCherry() {
-        super(ID, "circlet.png", RelicTier.RARE, LandingSound.MAGICAL);
+        super(ID, IMG, RelicTier.RARE, LandingSound.MAGICAL);
     }
 
     @Override

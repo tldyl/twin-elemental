@@ -1,6 +1,7 @@
 package demoMod.twin.relics;
 
 import basemod.abstracts.CustomRelic;
+import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -10,9 +11,10 @@ import demoMod.twin.TwinElementalMod;
 
 public class Razer extends CustomRelic {
     public static final String ID = TwinElementalMod.makeID("Razer");
+    public static final Texture IMG = new Texture(TwinElementalMod.getResourcePath("relics/razer.png"));
 
     public Razer() {
-        super(ID, "circlet.png", RelicTier.BOSS, LandingSound.MAGICAL);
+        super(ID, IMG, RelicTier.BOSS, LandingSound.MAGICAL);
     }
 
     @Override

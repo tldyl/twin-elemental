@@ -3,6 +3,7 @@ package demoMod.twin.relics;
 import basemod.Pair;
 import basemod.abstracts.CustomRelic;
 import basemod.abstracts.CustomSavable;
+import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -16,12 +17,13 @@ import demoMod.twin.TwinElementalMod;
 
 public class DistantSavior extends CustomRelic implements CustomSavable<Pair<String, Integer>> {
     public static final String ID = TwinElementalMod.makeID("DistantSavior");
+    public static final Texture IMG = new Texture(TwinElementalMod.getResourcePath("relics/distantSavior.png"));
 
     private boolean cardSelected = true;
     private Pair<String, Integer> cardSave;
 
     public DistantSavior() {
-        super(ID, "circlet.png", RelicTier.BOSS, LandingSound.MAGICAL);
+        super(ID, IMG, RelicTier.BOSS, LandingSound.MAGICAL);
     }
 
     @Override

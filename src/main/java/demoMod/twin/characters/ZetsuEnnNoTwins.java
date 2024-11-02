@@ -46,7 +46,7 @@ public class ZetsuEnnNoTwins extends CustomPlayer {
         this.initializeClass(TwinElementalMod.getResourcePath("char/character.png"), TwinElementalMod.getResourcePath("char/shoulder2.png"), TwinElementalMod.getResourcePath("char/shoulder.png"), TwinElementalMod.getResourcePath("char/corpse.png"), this.getLoadout(), 0.0F, -20F, 250.0F, 270.0F, new EnergyManager(3));
         this.stance = new Blaze();
         this.loadAnimation(TwinElementalMod.getResourcePath("char/break_fire_and_ice.atlas"), TwinElementalMod.getResourcePath("char/break_fire_and_ice.json"), 3.0F);
-        this.state.setAnimation(0, "fire_on_idle", true);
+        this.state.setAnimation(0, "fire_idle", true);
         if (ModHelper.enabledMods.size() > 0 && (ModHelper.isModEnabled("Diverse") || ModHelper.isModEnabled("Chimera") || ModHelper.isModEnabled("Blue Cards"))) {
             this.masterMaxOrbs = 1;
         }

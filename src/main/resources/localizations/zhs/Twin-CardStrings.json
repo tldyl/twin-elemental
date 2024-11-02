@@ -268,7 +268,7 @@
     ]
   },
   "Twin:Shifting": {
-    "NAME": "移形换影",
+    "NAME": "偷天换月",
     "DESCRIPTION": "twin:切换 。 NL twin:结界 !twin:TA! ：增加一张 *配合+ 到你的手牌。",
     "EXTENDED_DESCRIPTION": [
       "回合开始时，增加一张 #y配合+ 到你的手牌。"

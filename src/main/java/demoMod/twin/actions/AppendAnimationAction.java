@@ -5,13 +5,12 @@ import com.esotericsoftware.spine.Event;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
-public class ChangeAnimationAction extends AbstractGameAction {
-    private final String[] animationNames;
+public class AppendAnimationAction extends AbstractGameAction {
+    private final String animationName;
     private final boolean loop;
     private boolean firstUpdate = true;
-
-    public ChangeAnimationAction(boolean loop, String... animationName) {
-        this.animationNames = animationName;
+    public AppendAnimationAction(String animationName, boolean loop) {
+        this.animationName = animationName;
         this.loop = loop;
     }
 
@@ -20,10 +19,7 @@ public class ChangeAnimationAction extends AbstractGameAction {
         if (firstUpdate) {
             firstUpdate = false;
             isDone = loop;
-            AbstractDungeon.player.state.setAnimation(0, this.animationNames[0], loop);
-            for (int i=1;i<this.animationNames.length;i++) {
-                AbstractDungeon.player.state.setAnimation(i, this.animationNames[i], loop);
-            }
+            AbstractDungeon.player.state.addAnimation(0, this.animationName, loop, 0.0F);
             AbstractDungeon.player.state.addListener(new AnimationState.AnimationStateListener() {
                 @Override
                 public void event(int i, Event event) {
@@ -32,7 +28,7 @@ public class ChangeAnimationAction extends AbstractGameAction {
 
                 @Override
                 public void complete(int i, int i1) {
-                    System.out.printf("%s completed.%n", animationNames);
+                    System.out.printf("%s completed.%n", animationName);
                     isDone = true;
                     addToTop(new AbstractGameAction() {
                         @Override

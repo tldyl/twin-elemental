@@ -1,6 +1,7 @@
 package demoMod.twin.relics;
 
 import basemod.abstracts.CustomRelic;
+import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
@@ -13,8 +14,10 @@ import demoMod.twin.TwinElementalMod;
 public class AutumnMaple extends CustomRelic {
     public static final String ID = TwinElementalMod.makeID("AutumnMaple");
 
+    public static final Texture IMG = new Texture(TwinElementalMod.getResourcePath("relics/autumnMaple.png"));
+
     public AutumnMaple() {
-        super(ID, "circlet.png", RelicTier.BOSS, LandingSound.MAGICAL);
+        super(ID, IMG, RelicTier.BOSS, LandingSound.MAGICAL);
         this.counter = 0;
     }
 

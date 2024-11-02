@@ -1,6 +1,7 @@
 package demoMod.twin.relics;
 
 import basemod.abstracts.CustomRelic;
+import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -17,9 +18,11 @@ import java.util.stream.Collectors;
 
 public class GuideOfMoonlight extends CustomRelic {
     public static final String ID = TwinElementalMod.makeID("GuideOfMoonlight");
+    public static final Texture IMG = new Texture(TwinElementalMod.getResourcePath("relics/guideOfMoonlight.png"));
+    public static final Texture OUTLINE_IMG = new Texture(TwinElementalMod.getResourcePath("relics/guideOfMoonlight_outline.png"));
 
     public GuideOfMoonlight() {
-        super(ID, "circlet.png", RelicTier.RARE, LandingSound.MAGICAL);
+        super(ID, IMG, OUTLINE_IMG, RelicTier.RARE, LandingSound.MAGICAL);
     }
 
     @Override

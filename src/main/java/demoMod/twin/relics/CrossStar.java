@@ -2,6 +2,7 @@ package demoMod.twin.relics;
 
 import basemod.abstracts.CustomRelic;
 import basemod.abstracts.CustomSavable;
+import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -19,11 +20,13 @@ import java.util.List;
 
 public class CrossStar extends CustomRelic implements CustomSavable<List<String>> {
     public static final String ID = TwinElementalMod.makeID("CrossStar");
+    public static final Texture IMG = new Texture(TwinElementalMod.getResourcePath("relics/crossStar.png"));
+    public static final Texture OUTLINE_IMG = new Texture(TwinElementalMod.getResourcePath("relics/crossStar_outline.png"));
 
     private List<String> cardIds = new ArrayList<>();
 
     public CrossStar() {
-        super(ID, "circlet.png", RelicTier.UNCOMMON, LandingSound.MAGICAL);
+        super(ID, IMG, OUTLINE_IMG, RelicTier.UNCOMMON, LandingSound.MAGICAL);
     }
 
     @Override

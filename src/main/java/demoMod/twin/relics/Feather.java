@@ -1,6 +1,7 @@
 package demoMod.twin.relics;
 
 import basemod.abstracts.CustomRelic;
+import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -10,12 +11,14 @@ import demoMod.twin.enums.CardTagsEnum;
 
 public class Feather extends CustomRelic {
     public static final String ID = TwinElementalMod.makeID("Feather");
+    public static final Texture IMG = new Texture(TwinElementalMod.getResourcePath("relics/feather.png"));
+    public static final Texture OUTLINE_IMG = new Texture(TwinElementalMod.getResourcePath("relics/feather_outline.png"));
 
     private AbstractCard card;
     private boolean activated = false;
 
     public Feather() {
-        super(ID, "circlet.png", RelicTier.RARE, LandingSound.MAGICAL);
+        super(ID, IMG, OUTLINE_IMG, RelicTier.RARE, LandingSound.MAGICAL);
     }
 
     @Override

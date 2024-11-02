@@ -15,13 +15,10 @@ import com.megacrit.cardcrawl.vfx.combat.ScreenOnFireEffect;
 import demoMod.twin.TwinElementalMod;
 import demoMod.twin.enums.CardTagsEnum;
 import demoMod.twin.helpers.DomainGenerator;
-import demoMod.twin.interfaces.OnDomainTriggerSubscriber;
-import demoMod.twin.powers.DomainPower;
 
-import java.util.List;
 import java.util.function.Supplier;
 
-public class FantasyHell extends AbstractTwinCard implements OnDomainTriggerSubscriber {
+public class FantasyHell extends AbstractTwinCard {
     public static final String ID = TwinElementalMod.makeID("FantasyHell");
 
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
@@ -64,10 +61,5 @@ public class FantasyHell extends AbstractTwinCard implements OnDomainTriggerSubs
             addToBot(new DamageAllEnemiesAction(p, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.FIRE, true));
         }
         addToBot(new ApplyPowerAction(p, p, getDomainEffect().get()));
-    }
-
-    @Override
-    public void onDomainTrigger(List<DomainPower> domains) {
-        modifyCostForCombat(-domains.size());
     }
 }

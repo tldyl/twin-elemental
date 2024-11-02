@@ -39,8 +39,8 @@ public class SnowZonePower extends AbstractPower {
     public void onChangeStance(AbstractStance oldStance, AbstractStance newStance) {
         this.flash();
         for (AbstractMonster m : AbstractDungeon.getMonsters().monsters.stream().filter(m -> !m.isDeadOrEscaped()).collect(Collectors.toList())) {
-            addToBot(new ApplyPowerAction(owner, m, new WeakPower(m, this.amount, false)));
-            addToBot(new ApplyPowerAction(owner, m, new StrengthPower(m, -this.amount)));
+            addToBot(new ApplyPowerAction(m, owner, new WeakPower(m, this.amount, false)));
+            addToBot(new ApplyPowerAction(m, owner, new StrengthPower(m, -this.amount)));
         }
     }
 
