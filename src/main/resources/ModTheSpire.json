@@ -1,0 +1,12 @@
+{
+  "modid": "Zetsu Enn no Twins",
+  "name": "[Zetsu Enn no Twins] 绝焰的双子",
+  "author_list": ["Temple9", "很很很喜欢**的银墨"],
+  "description": "",
+  "credits": "",
+  "version": "1.0.0",
+  "sts_version": "03-07-2022",
+  "mts_version": "3.24.0",
+  "dependencies": ["basemod", "stslib"],
+  "update_json": ""
+}

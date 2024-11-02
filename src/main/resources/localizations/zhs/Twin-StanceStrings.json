@@ -1,0 +1,14 @@
+{
+  "Twin:Blaze": {
+    "NAME": "炎",
+    "DESCRIPTION": [
+      "当前 #y主导角色 为 #r炎 。"
+    ]
+  },
+  "Twin:Freeze": {
+    "NAME": "霜",
+    "DESCRIPTION": [
+      "当前 #y主导角色 为 #b霜 。"
+    ]
+  }
+}

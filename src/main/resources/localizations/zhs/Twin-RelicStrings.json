@@ -1,0 +1,96 @@
+{
+  "Twin:FirstPosition": {
+    "NAME": "首发位置",
+    "FLAVOR": "",
+    "DESCRIPTIONS": [
+      "记录当前的 #y主导角色 。 NL 主导情况会跨战斗保留。"
+    ]
+  },
+  "Twin:FetterOfElement": {
+    "NAME": "元素之绊",
+    "FLAVOR": "超越一切情感的羁绊。",
+    "DESCRIPTIONS": [
+      "每场战斗首次 #ytwin:切换 时，获得 [E] 并抽一张牌。"
+    ]
+  },
+  "Twin:FetterOfDicoaster": {
+    "NAME": "双星之绊",
+    "FLAVOR": "超越万事万物的羁绊。",
+    "DESCRIPTIONS": [
+      "#r替换元素之绊。 NL 每回合首次 #ytwin:切换 时，获得 [E] 并抽一张牌。"
+    ]
+  },
+  "Twin:Cooperation": {
+    "NAME": "配合",
+    "FLAVOR": "兄弟齐心。",
+    "DESCRIPTIONS": [
+      "在战斗开始时，增加一张 #y配合+ 到你的手牌。"
+    ]
+  },
+  "Twin:Rime": {
+    "NAME": "雾凇",
+    "FLAVOR": "隆冬的朝阳。",
+    "DESCRIPTIONS": [
+      "在战斗开始时，获得 #b1 层 #ytwin:同调 。"
+    ]
+  },
+  "Twin:Skewer": {
+    "NAME": "烤串",
+    "FLAVOR": "吃三口，暖一天。",
+    "DESCRIPTIONS": [
+      "每当你打出 #ytwin:结界 牌时，抽 #b1 张牌。"
+    ]
+  },
+  "Twin:GuideOfMoonlight": {
+    "NAME": "月光的指引",
+    "FLAVOR": "耳畔回响。",
+    "DESCRIPTIONS": [
+      "在战斗开始时，打出抽牌堆中的 #b2 张随机 #ytwin:结界 牌。"
+    ]
+  },
+  "Twin:CrimsonCherry": {
+    "NAME": "绯樱",
+    "FLAVOR": "刀起樱花落，燕返故人归。",
+    "DESCRIPTIONS": [
+      "每当你洗牌时，抽 #b2 张牌。"
+    ]
+  },
+  "Twin:Feather": {
+    "NAME": "羽毛",
+    "FLAVOR": "远方的天堂。",
+    "DESCRIPTIONS": [
+      "每回合首次打出耗能为 #b0 的 #ytwin:连携 牌时，将其放回手牌。"
+    ]
+  },
+  "Twin:AutumnMaple": {
+    "NAME": "红枫",
+    "FLAVOR": "秋之谧境，散于光谱。",
+    "DESCRIPTIONS": [
+      "你每打出 #b12 张牌，获得 #b1 层 #y缓冲 。"
+    ]
+  },
+  "Twin:Razer": {
+    "NAME": "雷蛇",
+    "FLAVOR": "滋啦滋啦！",
+    "DESCRIPTIONS": [
+      "在每回合的开始获得 [E] 。 NL 每当你受到未被 #y格挡 的 #y攻击 伤害时，向弃牌堆中加入一张 #y晕眩 。"
+    ]
+  },
+  "Twin:DistantSavior": {
+    "NAME": "遥远的救世主",
+    "FLAVOR": "一抹身影……",
+    "DESCRIPTIONS": [
+      "拾起时，选择一张牌组中的牌。 NL 每场战斗的前 #b3 个回合开始时，将其一份复制放入手牌。",
+      "选择一张牌。 每场战斗的前3个回合开始时，将其一份复制放入手牌。",
+      "每场战斗的前 #b3 个回合开始时，将 ",
+      " 的一份复制放入手牌。"
+    ]
+  },
+  "Twin:CrossStar": {
+    "NAME": "十字星",
+    "FLAVOR": "交错闪烁。",
+    "DESCRIPTIONS": [
+      "战斗结束时剩余的 #ytwin:结界 ，每种保留一层至下场战斗。"
+    ]
+  }
+}

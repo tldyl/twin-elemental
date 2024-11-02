@@ -1,0 +1,403 @@
+{
+  "Twin:Strike_T": {
+    "NAME": "打击",
+    "DESCRIPTION": "造成 !D! 点伤害。 NL twin:炎 ：额外造成 !M! 点伤害。"
+  },
+  "Twin:Defend_T": {
+    "NAME": "防御",
+    "DESCRIPTION": "获得 !B! 点 格挡 。 NL twin:霜 ：额外获得 !M! 点 格挡 。"
+  },
+  "Twin:DivideLabour": {
+    "NAME": "分工",
+    "DESCRIPTION": "造成 !D! 点伤害。 NL twin:炎 ：给予 !M! 层 易伤 。 NL twin:霜 ：给予 !M! 层 虚弱 。"
+  },
+  "Twin:Switch": {
+    "NAME": "切换",
+    "DESCRIPTION": "获得 !B! 点 格挡 。 NL twin:切换 。"
+  },
+  "Twin:Icicle": {
+    "NAME": "冰锥",
+    "DESCRIPTION": "造成 !D! 点伤害。 NL twin:霜 ：获得 !B! 点 格挡 。"
+  },
+  "Twin:Flachop": {
+    "NAME": "炎斩",
+    "DESCRIPTION": "造成 !D! 点伤害，目标在本回合从攻击受到的伤害增加 !M! 。 NL twin:炎 ：抽 !M! 张牌。"
+  },
+  "Twin:Abycold": {
+    "NAME": "异度深寒",
+    "DESCRIPTION": "twin:连携 。 NL 对所有敌人造成 !D! 点伤害。 NL 给予所有敌人 !M! 层 虚弱 。"
+  },
+  "Twin:HeatWave": {
+    "NAME": "热浪",
+    "DESCRIPTION": "twin:连携 。 NL 对所有敌人造成 !D! 点伤害。 NL 给予所有敌人 !M! 层 易伤 。"
+  },
+  "Twin:Starmunicate": {
+    "NAME": "双星交信",
+    "DESCRIPTION": "twin:连携 。 NL 造成 !D! 点伤害。 NL 若本回合内 twin:切换 过，额外造成一次 !D! 点伤害并 twin:加速 。"
+  },
+  "Twin:HemIn": {
+    "NAME": "夹击",
+    "DESCRIPTION": "造成 !D! 点伤害。 NL twin:炎 ：再造成一次 !D! 点伤害。 NL twin:霜 ：获得等同于造成未被 格挡 伤害的 格挡 。"
+  },
+  "Twin:Activate": {
+    "NAME": "活化",
+    "DESCRIPTION": "造成 !D! 点伤害。 NL 本回合内获得 !M! 层 twin:同调 。"
+  },
+  "Twin:Skate": {
+    "NAME": "溜冰",
+    "DESCRIPTION": "获得 !B! 点 格挡 。 NL twin:霜 ：获得 [E] ，抽 !M! 张牌并 twin:切换 。"
+  },
+  "Twin:LightingSlash": {
+    "NAME": "雷光切",
+    "DESCRIPTION": "造成 !D! 点伤害。 NL 如果目标具有 易伤 状态，伤害翻倍。 NL twin:炎 ：抽 !M! 张牌。"
+  },
+  "Twin:RedMoon": {
+    "NAME": "红月",
+    "DESCRIPTION": "twin:连携 。 NL 造成 !D! 点伤害。 NL 如果在耗能为0时打出，目标在本回合从攻击受到的伤害增加 !M! 。"
+  },
+  "Twin:FrozenWind": {
+    "NAME": "霜风",
+    "DESCRIPTION": "twin:连携 。 NL 造成 !D! 点伤害。 NL 如果在耗能为0时打出，目标失去 !M! 点 力量 一回合。"
+  },
+  "Twin:HotDomain": {
+    "NAME": "高温结界",
+    "DESCRIPTION": "需要 twin:炎 主导打出。 NL 对所有敌人造成 !D! 点伤害。 NL twin:结界 !twin:TA! ：所有敌人失去 !M! 点生命。",
+    "EXTENDED_DESCRIPTION": [
+      "回合开始时，所有敌人失去 #b%d 点生命。",
+      "这张牌要由 #r炎 来打出！"
+    ]
+  },
+  "Twin:ColdDomain": {
+    "NAME": "低温结界",
+    "DESCRIPTION": "需要 twin:霜 主导打出。 NL 获得 !B! 点 格挡 。 NL twin:结界 !twin:TA! ：给予所有敌人 !M! 层 虚弱 。",
+    "EXTENDED_DESCRIPTION": [
+      "回合开始时，给予所有敌人 #b%d 层 #y虚弱 。",
+      "这张牌要由 #r霜 来打出！"
+    ]
+  },
+  "Twin:WindDomain": {
+    "NAME": "御风结界",
+    "DESCRIPTION": "twin:结界 !twin:TA! ：抽 !M! 张牌。 NL twin:加速 。",
+    "EXTENDED_DESCRIPTION": [
+      "回合开始时，抽 #b%d 张牌。"
+    ]
+  },
+  "Twin:GatherDomain": {
+    "NAME": "聚魔结界",
+    "DESCRIPTION": "twin:结界 !twin:TA! ：获得 [E] 。 NL 消耗 。",
+    "EXTENDED_DESCRIPTION": [
+      "回合开始时，获得 [E] 。"
+    ]
+  },
+  "Twin:Shining": {
+    "NAME": "闪烁",
+    "DESCRIPTION": "获得 !B! 点 格挡 。 NL 如果本回合内出牌数不超过 !M! ， NL twin:炎 ： twin:加速 并 twin:切换 。 NL twin:霜 ：获得 [E] 并 twin:切换 。"
+  },
+  "Twin:Karma": {
+    "NAME": "因果",
+    "DESCRIPTION": " twin:霜 ：获得 !B! 点 格挡 。 NL twin:炎 ：抽 !M! 张牌。 NL twin:切换 。",
+    "EXTENDED_DESCRIPTION": [
+      "冰结之绊"
+    ]
+  },
+  "Twin:SeeYouOtherside": {
+    "NAME": "思念的彼方",
+    "DESCRIPTION": "twin:连携 。 NL 获得 !B! 点 格挡 。 NL 如果在耗能为0时打出，在本场战斗中其 格挡 增加 !M! 。"
+  },
+  "Twin:Snowstorm": {
+    "NAME": "雪走",
+    "DESCRIPTION": "给予 !M! 层虚弱 ，抽 !M! 张 twin:结界 牌。 NL twin:霜 ：本回合内获得 !M! 层 twin:同调 。"
+  },
+  "Twin:Firacier": {
+    "NAME": "炎川",
+    "DESCRIPTION": "造成 !D! 点伤害。 NL twin:结界 !twin:TA! ： twin:切换 时，所有敌人失去 !M! 点生命。",
+    "EXTENDED_DESCRIPTION": [
+      "每当你 #y切换 时，所有敌人失去 #b%d 点生命。"
+    ]
+  },
+  "Twin:FrozenSpear": {
+    "NAME": "急冻霜枪",
+    "DESCRIPTION": "twin:连携 。 NL 造成 !D! 点伤害 !M! 次。 NL twin:霜 ：额外造成等同于目标身上 虚弱 层数的伤害。"
+  },
+  "Twin:FireWheel": {
+    "NAME": "炎轮",
+    "DESCRIPTION": "twin:连携 。 NL 对随机敌人造成 !D! 点伤害并给予一层 易伤 3次。 NL twin:炎 ：被攻击的目标在本回合从攻击受到的伤害增加 !M! 。"
+  },
+  "Twin:GeminiRotate": {
+    "NAME": "双子星轮转",
+    "DESCRIPTION": "twin:连携 。 NL 造成 !D! 点伤害 !M! 次。 NL 如果在耗能为0时打出，获得1层 twin:同调 。"
+  },
+  "Twin:IcyBurst": {
+    "NAME": "冰屑飞溅",
+    "DESCRIPTION": "对所有敌人造成 !D! 点伤害 !M! 次。 NL 给予所有敌人1层 虚弱 。 NL twin:霜 ：所有敌人失去1点 力量 。"
+  },
+  "Twin:FireBurst": {
+    "NAME": "炎爆",
+    "DESCRIPTION": "保留 。 twin:连携 。 NL 需要 twin:炎 主导打出。 NL 对所有敌人造成 !M! 倍于本场战斗打出过攻击牌数量的伤害。",
+    "EXTENDED_DESCRIPTION": [
+      "(造成 !D! 点伤害。)",
+      "这张牌要由 #r炎 来打出！"
+    ]
+  },
+  "Twin:Radius20MetersDomain": {
+    "NAME": "半径二十米大结界",
+    "DESCRIPTION": "twin:连携 。 NL 打出抽牌堆中随机 !M! 张 twin:结界 。 NL 如果在耗能为0时打出，再打出一张。"
+  },
+  "Twin:DeathFreeze": {
+    "NAME": "绝死冰霜",
+    "DESCRIPTION": "需要 twin:霜 主导打出。 NL 给予所有敌人 !M! 层 虚弱 。 NL twin:结界 !twin:TA! ：获得等同于场上 虚弱 总层数的 格挡 ，所有敌人失去等量生命。",
+    "EXTENDED_DESCRIPTION": [
+      "回合开始时，获得等同于场上 #y虚弱 总层数的 #y格挡 ，所有敌人失去等量生命。",
+      "这张牌要由 #b霜 来打出！"
+    ]
+  },
+  "Twin:ElementRotate": {
+    "NAME": "元素流转",
+    "DESCRIPTION": "造成 !D! 点伤害。 NL twin:炎 ：本回合内获得 !M! 点 力量 。 NL twin:霜 ：本回合内获得 !M! 点 敏捷 。 NL twin:切换 。"
+  },
+  "Twin:BurningSky": {
+    "NAME": "焚天",
+    "DESCRIPTION": "需要 twin:炎 主导打出。 NL 获得 !M! 层 活力 。 NL twin:结界 !twin:TA! ：获得 !M! 层 活力 。",
+    "EXTENDED_DESCRIPTION": [
+      "回合开始时，获得 #b%d 层 #y活力 。",
+      "这张牌要由 #r炎 来打出！"
+    ]
+  },
+  "Twin:Monopoly": {
+    "NAME": "蜘蛛丝",
+    "DESCRIPTION": "从手牌中选择最多 !M! 张牌 消耗 。 NL 在下场战斗开始时，打出这些牌的复制。 NL 消耗 。"
+  },
+  "Twin:Cooperate": {
+    "NAME": "配合",
+    "DESCRIPTION": "保留 。 NL twin:切换 。 NL 消耗 。",
+    "UPGRADE_DESCRIPTION": "保留 。 NL twin:切换 。 NL 抽一张牌。 NL 消耗 。"
+  },
+  "Twin:SeaOfLantern": {
+    "NAME": "火树银花",
+    "DESCRIPTION": "造成 !D! 点伤害。 NL twin:霜 ：获得 [E] 。 NL twin:炎 ：增加 !M! 张 *配合+ 到你的手牌。",
+    "UPGRADE_DESCRIPTION": "造成 !D! 点伤害。 NL twin:霜 ：获得 [E] [E] 。 NL twin:炎 ：增加 !M! 张 *配合+ 到你的手牌。",
+    "EXTENDED_DESCRIPTION": [
+      "一同走过的灯海"
+    ]
+  },
+  "Twin:FantasyLantern": {
+    "NAME": "幻灵灯火",
+    "DESCRIPTION": "目标失去 !M! 点生命。 NL 增加一张 *配合 到你的手牌。",
+    "UPGRADE_DESCRIPTION": "目标失去 !M! 点生命。 NL 增加2张 *配合 到你的手牌。"
+  },
+  "Twin:Hikari": {
+    "NAME": "光",
+    "DESCRIPTION": "twin:切换 。 NL 增加一张 *配合 到你的手牌。",
+    "UPGRADE_DESCRIPTION": "twin:切换 。 NL 增加一张 *配合+ 到你的手牌。"
+  },
+  "Twin:Darkrooms": {
+    "NAME": "黑暗狭间",
+    "DESCRIPTION": "twin:结界 !twin:TA! ： twin:结界 触发时，如果是 twin:炎 主导，获得 !M! 点 力量 。 NL 否则，失去 1 点 力量 。",
+    "EXTENDED_DESCRIPTION": [
+      "#y结界 触发时，如果是 #r炎 主导，获得 #b%d 点 #y力量 。 NL 否则，失去 #b1 点 #y力量 。"
+    ]
+  },
+  "Twin:TwinMoons": {
+    "NAME": "貮月",
+    "DESCRIPTION": "twin:炎 ：抽 !M! 张牌。 NL twin:霜 ：获得 [E] [E] 。 NL twin:切换 。",
+    "UPGRADE_DESCRIPTION": "twin:炎 ：抽 !M! 张牌。 NL twin:霜 ：获得 [E] [E] [E] 。 NL twin:切换 。"
+  },
+  "Twin:MagicBlock": {
+    "NAME": "幻方",
+    "DESCRIPTION": "获得 !B! 点 格挡 。 NL twin:炎 ： twin:加速 !M! 次。 NL twin:霜 ：本回合内获得 !M! 层 twin:同调 。"
+  },
+  "Twin:FantasyStar": {
+    "NAME": "幻灵星体",
+    "DESCRIPTION": "获得 !B! 点 格挡 。 NL 选择 !M! 张未被 消耗 的 twin:结界 牌加入手牌。"
+  },
+  "Twin:Stasis": {
+    "NAME": "凪",
+    "DESCRIPTION": "获得 [E] [E] [E] 。 NL 你本回合不能再改变 姿态 。",
+    "UPGRADE_DESCRIPTION": "获得 [E] [E] [E] [E] 。 NL 你本回合不能再改变 姿态 。"
+  },
+  "Twin:SnowZone": {
+    "NAME": "雪域",
+    "DESCRIPTION": "twin:连携 。 NL 获得 !B! 点 格挡 。 NL twin:霜 ：在本回合 twin:切换 时，给予所有敌人 !M! 层 虚弱 ； NL 所有敌人失去 !M! 点 力量 。"
+  },
+  "Twin:HotWind": {
+    "NAME": "热风",
+    "DESCRIPTION": "twin:连携 。 NL 对所有敌人造成 !D! 点伤害。 NL twin:炎 ：获得等同于本回合 twin:切换 次数 !M! 倍的 活力 。",
+    "EXTENDED_DESCRIPTION": [
+      " NL (你本回合已 twin:切换 过 %d 次)"
+    ]
+  },
+  "Twin:HolyCross": {
+    "NAME": "圣银十字",
+    "DESCRIPTION": "twin:结界 !twin:TA! ：移除随机一种负面效果并 消耗 抽牌堆中的一张随机 状态 牌。",
+    "EXTENDED_DESCRIPTION": [
+      "你的回合开始时，移除随机一种负面效果并 #y消耗 抽牌堆中的一张随机 #y状态 牌。"
+    ]
+  },
+  "Twin:Niflheimr": {
+    "NAME": "雾霜之国",
+    "DESCRIPTION": "每次 twin:切换 至 twin:霜 时，所有敌人失去 !M! 点 力量 一回合。",
+    "UPGRADE_DESCRIPTION": "每次 twin:切换 至 twin:霜 时，所有敌人失去 !M! 点 力量 一回合； NL 给予所有敌人 !M! 层 虚弱 。"
+  },
+  "Twin:FrozenOcean": {
+    "NAME": "千年冰海",
+    "DESCRIPTION": "需要 twin:霜 主导打出。 NL 获得 !M! 层多层护甲。 twin:结界 !twin:TA! ：获得 !M! 点 格挡 。",
+    "EXTENDED_DESCRIPTION": [
+      "你的回合开始时，获得 #b%d 点 #y格挡 。",
+      "这张牌要由 #b霜 来打出！"
+    ]
+  },
+  "Twin:WolfPath": {
+    "NAME": "狼之道",
+    "DESCRIPTION": "twin:炎 ：抽牌直到手牌为满，丢弃所有非攻击牌。 NL twin:霜 ：获得等同于回合开始时获得能量数的 [E] ，丢弃所有非技能牌。"
+  },
+  "Twin:PolarWind": {
+    "NAME": "极地霜风",
+    "DESCRIPTION": "需要 twin:霜 主导打出。 NL 给予所有敌人X层 虚弱 。 twin:结界 X ：所有敌人失去 !M! 点 力量 。 NL 消耗 。",
+    "UPGRADE_DESCRIPTION": "需要 twin:霜 主导打出。 NL 给予所有敌人X+1层 虚弱 。 twin:结界 X+1 ：所有敌人失去 !M! 点 力量 。 NL 消耗 。",
+    "EXTENDED_DESCRIPTION": [
+      "你的回合开始时，所有敌人失去 #b%d 点 #y力量 。",
+      "这张牌要由 #b霜 来打出！"
+    ]
+  },
+  "Twin:Volcano": {
+    "NAME": "火山",
+    "DESCRIPTION": "需要 twin:炎 主导打出。 NL twin:加速 X次。",
+    "UPGRADE_DESCRIPTION": "需要 twin:炎 主导打出。 NL twin:加速 X+1次。",
+    "EXTENDED_DESCRIPTION": [
+      "这张牌要由 #r炎 来打出！"
+    ]
+  },
+  "Twin:Shifting": {
+    "NAME": "移形换影",
+    "DESCRIPTION": "twin:切换 。 NL twin:结界 !twin:TA! ：增加一张 *配合+ 到你的手牌。",
+    "EXTENDED_DESCRIPTION": [
+      "回合开始时，增加一张 #y配合+ 到你的手牌。"
+    ]
+  },
+  "Twin:Proud": {
+    "NAME": "孤傲",
+    "DESCRIPTION": "抽 !M! 张牌。 NL 从手牌中选择一张牌将其打出两次。 NL 结束你的回合。",
+    "EXTENDED_DESCRIPTION": [
+      "打出两次"
+    ]
+  },
+  "Twin:KuuhakuDomain": {
+    "NAME": "空白结界",
+    "DESCRIPTION": "固有 。 NL twin:结界 !twin:TA! ：打出弃牌堆中的一张随机 twin:结界 牌。 NL 消耗 。",
+    "EXTENDED_DESCRIPTION": [
+      "你的回合开始时，打出弃牌堆中的一张随机 #y结界 牌。"
+    ]
+  },
+  "Twin:Avalon": {
+    "NAME": "遗世独立的理想乡",
+    "DESCRIPTION": "每当你打出手牌中的六号位牌时，获得6点 格挡 并抽一张牌。",
+    "UPGRADE_DESCRIPTION": "固有 。 NL 每当你打出手牌中的六号位牌时，获得6点 格挡 并抽一张牌。"
+  },
+  "Twin:Yuusha": {
+    "NAME": "勇者",
+    "DESCRIPTION": "twin:结界 的效果结束时，打出抽牌堆中的一张同名 twin:结界 牌。"
+  },
+  "Twin:DaylightCycle": {
+    "NAME": "昼夜",
+    "DESCRIPTION": "获得 !M! 层 twin:昼夜 。"
+  },
+  "Twin:Perceive": {
+    "NAME": "感知",
+    "DESCRIPTION": "获得 !M! 层 twin:同调 。"
+  },
+  "Twin:Dust": {
+    "NAME": "星尘",
+    "DESCRIPTION": "每回合的前 !M! 次 twin:切换 会额外获得 [E] 。"
+  },
+  "Twin:DaybreakSpear": {
+    "NAME": "破晓天枪",
+    "DESCRIPTION": "保留 。 NL twin:连携 。 NL 只有在本牌耗能为0时才能打出。 NL twin:炎 ：造成 !D! 点伤害。",
+    "EXTENDED_DESCRIPTION": [
+      "这张牌必须在耗能为0时打出！"
+    ]
+  },
+  "Twin:KingIceBound": {
+    "NAME": "冰封之王",
+    "DESCRIPTION": "twin:连携 。 NL 造成 !D! 点伤害。 NL 给予 !M! 层 虚弱 。 NL twin:霜 ：使抽牌堆中所有 twin:连携 牌下次打出前的耗能减少1。",
+    "EXTENDED_DESCRIPTION": [
+      "悲叹冥河"
+    ]
+  },
+  "Twin:FantasyHell": {
+    "NAME": "幻灵地狱",
+    "DESCRIPTION": "对所有敌人造成 !D! 点伤害 !M! 次。 NL twin:结界 !twin:TA! ：获得 [E] 。",
+    "EXTENDED_DESCRIPTION": [
+      "回合开始时，获得 [E] 。"
+    ]
+  },
+  "Twin:MissingSurge": {
+    "NAME": "思念涌动",
+    "DESCRIPTION": "每当 twin:切换 至 twin:炎 时，抽 !M! 张牌。",
+    "UPGRADE_DESCRIPTION": "固有 。 NL 每当 twin:切换 至 twin:炎 时，抽 !M! 张牌。",
+    "EXTENDED_DESCRIPTION": [
+      "幻灵法则"
+    ]
+  },
+  "Twin:Hanabi": {
+    "NAME": "花火",
+    "DESCRIPTION": "在你的回合结束时， twin:加速 !M! 次。",
+    "UPGRADE_DESCRIPTION": "固有 。 NL 在你的回合结束时， twin:加速 !M! 次。"
+  },
+  "Twin:Asahi": {
+    "NAME": "明朝会",
+    "DESCRIPTION": "每当你 twin:切换 时，获得 !M! 点 格挡 。"
+  },
+  "Twin:DomainGospel": {
+    "NAME": "结界福音书",
+    "DESCRIPTION": "打出抽牌堆中的随机 !M! 张 twin:结界 牌。 NL twin:加速 。 NL 消耗 。"
+  },
+  "Twin:DomainRevelation": {
+    "NAME": "结界启示录",
+    "DESCRIPTION": "在你的回合开始时，增加一张具有 消耗 和 虚无 的随机 twin:结界 牌到你的手牌。",
+    "UPGRADE_DESCRIPTION": "在你的回合开始时，增加一张 升级 的具有 消耗 和 虚无 的随机 twin:结界 牌到你的手牌。"
+  },
+  "Twin:Maplooming": {
+    "NAME": "枫华正茂",
+    "DESCRIPTION": "只有在本回合 twin:切换 过 !M! 次后才能打出。 NL 获得一层 无实体 。",
+    "EXTENDED_DESCRIPTION": [
+      "(你在本回合已 twin:切换 过%d次)",
+      "本回合切换次数没有达到要求！"
+    ]
+  },
+  "Twin:Butterfly": {
+    "NAME": "蝴蝶",
+    "DESCRIPTION": "抽 !M! 张牌。 NL 获得 [E] [E] [E] 。 NL 每有一张其他手牌，抽牌数和 [E] 获得量降低1。 NL 消耗 。",
+    "UPGRADE_DESCRIPTION": "抽 !M! 张牌。 NL 获得 [E] [E] [E] [E] 。 NL 每有一张其他手牌，抽牌数和 [E] 获得量降低1。 NL 消耗 。"
+  },
+  "Twin:CosmosDomain": {
+    "NAME": "天地大阵",
+    "DESCRIPTION": "打出并 消耗 所有 twin:结界 牌。 NL 消耗 。"
+  },
+  "Twin:SpinningRadiance": {
+    "NAME": "熘煋飞转",
+    "DESCRIPTION": "丢弃所有手牌。 NL 然后抽相同数量张牌。 NL 打出抽到的所有 twin:结界 牌 。"
+  },
+  "Twin:JintaiRensei": {
+    "NAME": "人体炼成",
+    "DESCRIPTION": "twin:连携 。 NL 获得 !M! 点最大生命。 NL 消耗 。"
+  },
+  "Twin:Seasons": {
+    "NAME": "天有四时",
+    "DESCRIPTION": "下 !M! 次 twin:切换 时， twin:加速 并获得 [E] 。",
+    "EXTENDED_DESCRIPTION": [
+      "法正五度"
+    ]
+  },
+  "Twin:Haru": {
+    "NAME": "春",
+    "DESCRIPTION": "打出耗能为0的 twin:连携 牌时，获得 !M! 层 twin:同调 。"
+  },
+  "Twin:ThenWeReunion": {
+    "NAME": "倘若彼时能再会",
+    "DESCRIPTION": "获得 !M! 层 twin:同调 。 NL twin:结界 将不再在回合开始时触发。"
+  },
+  "Twin:VenusForm": {
+    "NAME": "启明星形态",
+    "DESCRIPTION": "最左侧手牌视为具有 !M! 点 力量 增幅。 NL 最右侧手牌视为具有 !M! 点 敏捷 增幅。 NL twin:切换 时，对调增幅的位置。"
+  }
+}

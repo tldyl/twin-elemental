@@ -1,0 +1,29 @@
+{
+  "Twin:AgilePotion": {
+    "NAME": "灵敏药水",
+    "DESCRIPTIONS": [
+      "#y切换 。",
+      "twin:切换"
+    ]
+  },
+  "Twin:HandWarmer": {
+    "NAME": "暖宝宝",
+    "DESCRIPTIONS": [
+      "获得 [E] 。 NL 下 #b%d 个回合开始时，获得 [E] 。"
+    ]
+  },
+  "Twin:Refrigerant": {
+    "NAME": "制冷剂",
+    "DESCRIPTIONS": [
+      "将手牌中所有 #y连携 牌的耗能在下次打出前变为 #b0 。",
+      "twin:连携"
+    ]
+  },
+  "Twin:AcceleratePotion": {
+    "NAME": "加速药水",
+    "DESCRIPTIONS": [
+      "#y加速 #b%d 次。",
+      "twin:加速"
+    ]
+  }
+}

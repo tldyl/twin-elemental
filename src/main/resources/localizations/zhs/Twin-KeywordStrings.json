@@ -1,0 +1,66 @@
+[
+  {
+    "NAMES": [
+      "切换",
+      "switch"
+    ],
+    "PROPER_NAME": "切换",
+    "DESCRIPTION": "切换 #y主导角色 ，并令大部分卡牌产生不同效果。 NL 主导情况会跨战斗保留。"
+  },
+  {
+    "NAMES": [
+      "炎",
+      "blaze"
+    ],
+    "PROPER_NAME": "炎",
+    "DESCRIPTION": "#y主导角色 为 #y炎 时生效。"
+  },
+  {
+    "NAMES": [
+      "霜",
+      "freeze"
+    ],
+    "PROPER_NAME": "霜",
+    "DESCRIPTION": "#y主导角色 为 #y霜 时生效。"
+  },
+  {
+    "NAMES": [
+      "连携",
+      "coporate"
+    ],
+    "PROPER_NAME": "连携",
+    "DESCRIPTION": "在手牌中时，每次 #y切换 都令 #y连携 牌在下次打出前耗能减少 #b1 。"
+  },
+  {
+    "NAMES": [
+      "结界",
+      "domain"
+    ],
+    "PROPER_NAME": "结界 X",
+    "DESCRIPTION": "一类在回合开始时触发的效果，持续X回合。"
+  },
+  {
+    "NAMES": [
+      "加速",
+      "accelerate"
+    ],
+    "PROPER_NAME": "加速",
+    "DESCRIPTION": "立即结算所有 #y结界 的效果一次。"
+  },
+  {
+    "NAMES": [
+      "同调",
+      "trace"
+    ],
+    "PROPER_NAME": "同调",
+    "DESCRIPTION": "#y同调 会增加 #y结界 持续的回合数。"
+  },
+  {
+    "NAMES": [
+      "昼夜",
+      "daylight-cycle"
+    ],
+    "PROPER_NAME": "昼夜",
+    "DESCRIPTION": "昼：等价于 #y力量 。 NL 夜：等价于 #y敏捷 。 NL 每打出 #b12 张牌切换 #y昼夜 状态。"
+  }
+]

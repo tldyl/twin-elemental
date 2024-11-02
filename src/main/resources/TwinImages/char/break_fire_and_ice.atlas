@@ -1,0 +1,417 @@
+
+break_fire_and_ice.png
+size: 2048,2048
+format: RGBA8888
+filter: MipMapLinearLinear,Linear
+repeat: none
+fire_arm_L
+  rotate: false
+  xy: 1103, 949
+  size: 137, 149
+  orig: 137, 149
+  offset: 0, 0
+  index: -1
+fire_daimao
+  rotate: false
+  xy: 2, 2
+  size: 81, 21
+  orig: 81, 21
+  offset: 0, 0
+  index: -1
+fire_dark_shadow
+  rotate: true
+  xy: 1244, 821
+  size: 826, 753
+  orig: 826, 753
+  offset: 0, 0
+  index: -1
+fire_dark_shadow_eyes
+  rotate: true
+  xy: 2000, 1972
+  size: 73, 45
+  orig: 73, 45
+  offset: 0, 0
+  index: -1
+fire_ear_L
+  rotate: true
+  xy: 2000, 1909
+  size: 61, 41
+  orig: 61, 41
+  offset: 0, 0
+  index: -1
+fire_leg_R
+  rotate: false
+  xy: 1767, 21
+  size: 275, 182
+  orig: 275, 182
+  offset: 0, 0
+  index: -1
+fire_ring_F3
+  rotate: true
+  xy: 1244, 1649
+  size: 396, 754
+  orig: 396, 754
+  offset: 0, 0
+  index: -1
+fire_shadow
+  rotate: true
+  xy: 1103, 3
+  size: 816, 257
+  orig: 816, 257
+  offset: 0, 0
+  index: -1
+fire_tail
+  rotate: true
+  xy: 1592, 4
+  size: 199, 173
+  orig: 199, 173
+  offset: 0, 0
+  index: -1
+ice_arm_L
+  rotate: false
+  xy: 1362, 4
+  size: 228, 199
+  orig: 228, 199
+  offset: 0, 0
+  index: -1
+ice_daimao
+  rotate: true
+  xy: 2000, 1794
+  size: 113, 39
+  orig: 113, 39
+  offset: 0, 0
+  index: -1
+ice_dark_shadow
+  rotate: true
+  xy: 2, 25
+  size: 1073, 1099
+  orig: 1073, 1099
+  offset: 0, 0
+  index: -1
+ice_dark_shadow_eyes
+  rotate: true
+  xy: 2000, 1700
+  size: 54, 36
+  orig: 54, 36
+  offset: 0, 0
+  index: -1
+ice_ear_R
+  rotate: false
+  xy: 1103, 825
+  size: 95, 122
+  orig: 95, 122
+  offset: 0, 0
+  index: -1
+ice_flyice_B_L3
+  rotate: false
+  xy: 2, 1100
+  size: 1240, 945
+  orig: 1240, 945
+  offset: 0, 0
+  index: -1
+ice_flyice_B_R2
+  rotate: true
+  xy: 1362, 205
+  size: 614, 669
+  orig: 614, 669
+  offset: 0, 0
+  index: -1
+ice_flyice_F1
+  rotate: false
+  xy: 2000, 1663
+  size: 36, 35
+  orig: 36, 35
+  offset: 0, 0
+  index: -1
+ice_flyice_F3
+  rotate: true
+  xy: 2000, 1631
+  size: 30, 32
+  orig: 30, 32
+  offset: 0, 0
+  index: -1
+ice_flyice_F4
+  rotate: true
+  xy: 2000, 1756
+  size: 36, 37
+  orig: 36, 37
+  offset: 0, 0
+  index: -1
+
+break_fire_and_ice2.png
+size: 2048,2048
+format: RGBA8888
+filter: MipMapLinearLinear,Linear
+repeat: none
+fire_arm_L2
+  rotate: false
+  xy: 1813, 1601
+  size: 232, 232
+  orig: 232, 232
+  offset: 0, 0
+  index: -1
+fire_arm_L_B
+  rotate: false
+  xy: 1667, 16
+  size: 110, 109
+  orig: 110, 109
+  offset: 0, 0
+  index: -1
+fire_arm_R
+  rotate: false
+  xy: 971, 991
+  size: 251, 143
+  orig: 251, 143
+  offset: 0, 0
+  index: -1
+fire_arm_R2
+  rotate: false
+  xy: 1714, 1835
+  size: 332, 210
+  orig: 332, 210
+  offset: 0, 0
+  index: -1
+fire_body
+  rotate: true
+  xy: 971, 1398
+  size: 342, 415
+  orig: 342, 415
+  offset: 0, 0
+  index: -1
+fire_ear_R
+  rotate: true
+  xy: 726, 18
+  size: 58, 69
+  orig: 58, 69
+  offset: 0, 0
+  index: -1
+fire_leg_L2
+  rotate: false
+  xy: 1633, 425
+  size: 245, 128
+  orig: 245, 128
+  offset: 0, 0
+  index: -1
+fire_light_shadow
+  rotate: false
+  xy: 2, 170
+  size: 885, 813
+  orig: 885, 813
+  offset: 0, 0
+  index: -1
+fire_ring_D1
+  rotate: true
+  xy: 1504, 12
+  size: 113, 161
+  orig: 113, 161
+  offset: 0, 0
+  index: -1
+fire_ring_D3
+  rotate: true
+  xy: 2, 25
+  size: 143, 660
+  orig: 143, 660
+  offset: 0, 0
+  index: -1
+fire_ring_D4
+  rotate: false
+  xy: 1388, 1188
+  size: 176, 552
+  orig: 176, 552
+  offset: 0, 0
+  index: -1
+fire_ring_F2
+  rotate: false
+  xy: 1566, 1301
+  size: 245, 439
+  orig: 245, 439
+  offset: 0, 0
+  index: -1
+fire_ring_F4
+  rotate: true
+  xy: 971, 1742
+  size: 303, 741
+  orig: 303, 741
+  offset: 0, 0
+  index: -1
+fire_ring_F5
+  rotate: true
+  xy: 1504, 127
+  size: 268, 530
+  orig: 268, 530
+  offset: 0, 0
+  index: -1
+ice_arm_R
+  rotate: false
+  xy: 1633, 555
+  size: 310, 435
+  orig: 310, 435
+  offset: 0, 0
+  index: -1
+ice_body
+  rotate: true
+  xy: 889, 397
+  size: 586, 742
+  orig: 586, 742
+  offset: 0, 0
+  index: -1
+ice_ear_L
+  rotate: true
+  xy: 734, 78
+  size: 90, 62
+  orig: 90, 62
+  offset: 0, 0
+  index: -1
+ice_face_mao
+  rotate: false
+  xy: 664, 34
+  size: 60, 65
+  orig: 60, 65
+  offset: 0, 0
+  index: -1
+ice_flyice_B_C
+  rotate: false
+  xy: 2, 985
+  size: 967, 1060
+  orig: 967, 1060
+  offset: 0, 0
+  index: -1
+ice_flyice_B_L
+  rotate: true
+  xy: 1366, 992
+  size: 194, 378
+  orig: 194, 378
+  offset: 0, 0
+  index: -1
+ice_flyice_B_L2
+  rotate: true
+  xy: 971, 1136
+  size: 260, 393
+  orig: 260, 393
+  offset: 0, 0
+  index: -1
+ice_flyice_B_R
+  rotate: false
+  xy: 1746, 996
+  size: 246, 303
+  orig: 246, 303
+  offset: 0, 0
+  index: -1
+ice_flyice_F1_light
+  rotate: false
+  xy: 797, 19
+  size: 57, 57
+  orig: 57, 57
+  offset: 0, 0
+  index: -1
+ice_flyice_F2
+  rotate: true
+  xy: 1912, 42
+  size: 83, 85
+  orig: 83, 85
+  offset: 0, 0
+  index: -1
+ice_flyice_F2_light
+  rotate: true
+  xy: 664, 101
+  size: 67, 68
+  orig: 67, 68
+  offset: 0, 0
+  index: -1
+ice_flyice_F3_light
+  rotate: false
+  xy: 798, 115
+  size: 53, 53
+  orig: 53, 53
+  offset: 0, 0
+  index: -1
+ice_flyice_F4_light
+  rotate: false
+  xy: 798, 115
+  size: 53, 53
+  orig: 53, 53
+  offset: 0, 0
+  index: -1
+ice_head_face
+  rotate: false
+  xy: 1779, 17
+  size: 131, 108
+  orig: 131, 108
+  offset: 0, 0
+  index: -1
+ice_leg_R
+  rotate: false
+  xy: 889, 2
+  size: 613, 393
+  orig: 613, 393
+  offset: 0, 0
+  index: -1
+ice_tail
+  rotate: false
+  xy: 1813, 1302
+  size: 229, 297
+  orig: 229, 297
+  offset: 0, 0
+  index: -1
+
+break_fire_and_ice3.png
+size: 1024,1024
+format: RGBA8888
+filter: MipMapLinearLinear,Linear
+repeat: none
+fire_face
+  rotate: false
+  xy: 516, 476
+  size: 196, 186
+  orig: 196, 186
+  offset: 0, 0
+  index: -1
+fire_leg_L
+  rotate: false
+  xy: 240, 303
+  size: 233, 190
+  orig: 233, 190
+  offset: 0, 0
+  index: -1
+fire_leg_R2
+  rotate: true
+  xy: 2, 261
+  size: 271, 236
+  orig: 271, 236
+  offset: 0, 0
+  index: -1
+fire_ring_D2
+  rotate: true
+  xy: 620, 664
+  size: 297, 343
+  orig: 297, 343
+  offset: 0, 0
+  index: -1
+fire_ring_F1
+  rotate: false
+  xy: 2, 534
+  size: 244, 427
+  orig: 244, 427
+  offset: 0, 0
+  index: -1
+ice_arm_L2
+  rotate: true
+  xy: 248, 495
+  size: 180, 266
+  orig: 180, 266
+  offset: 0, 0
+  index: -1
+ice_flyice_B_R3
+  rotate: false
+  xy: 248, 677
+  size: 370, 284
+  orig: 370, 284
+  offset: 0, 0
+  index: -1
+ice_head
+  rotate: true
+  xy: 2, 14
+  size: 245, 220
+  orig: 245, 220
+  offset: 0, 0
+  index: -1
