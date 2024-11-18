@@ -24,7 +24,7 @@ public class Butterfly extends AbstractTwinCard {
 
     public Butterfly() {
         super(ID, NAME, TwinElementalMod.getResourcePath(IMG_PATH), COST, DESCRIPTION, TYPE, RARITY, TARGET);
-        this.baseMagicNumber = this.magicNumber = 3;
+        this.baseMagicNumber = this.magicNumber = 4;
         this.exhaust = true;
     }
 
@@ -43,8 +43,8 @@ public class Butterfly extends AbstractTwinCard {
         int energyAmount = upgraded ? 4 : 3;
         drawAmount -= p.hand.size() - 1;
         energyAmount -= p.hand.size() - 1;
-        if (drawAmount < 0) drawAmount = 0;
-        if (energyAmount < 0) energyAmount = 0;
+        if (drawAmount < 1) drawAmount = 1;
+        if (energyAmount < 1) energyAmount = 1;
         addToBot(new DrawCardAction(drawAmount));
         addToBot(new GainEnergyAction(energyAmount));
     }

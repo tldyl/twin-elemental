@@ -1,5 +1,6 @@
 package demoMod.twin.patches;
 
+import basemod.BaseMod;
 import basemod.patches.com.megacrit.cardcrawl.cards.AbstractCard.MultiCardPreview;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.actions.utility.NewQueueCardAction;
@@ -11,6 +12,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import demoMod.twin.cards.twin.Monopoly;
+import demoMod.twin.ui.DomainCardsPanel;
 
 import java.util.List;
 import java.util.Map;
@@ -23,6 +25,8 @@ public class AbstractPlayerPatch {
     )
     public static class PatchPreBattlePrep {
         public static void Postfix(AbstractPlayer p) {
+            DomainCardsPanel.inst = new DomainCardsPanel();
+            BaseMod.subscribe(DomainCardsPanel.inst);
             List<AbstractCard> monopolies = p.masterDeck.group.stream().filter(card -> card instanceof Monopoly).collect(Collectors.toList());
             monopolies.forEach(card -> {
                 Monopoly monopoly = (Monopoly) card;
@@ -59,6 +63,17 @@ public class AbstractPlayerPatch {
                 monopoly.cardSave.clear();
                 MultiCardPreview.clear(monopoly);
             });
+        }
+    }
+
+    @SpirePatch(
+            clz = AbstractPlayer.class,
+            method = "onVictory"
+    )
+    public static class PatchOnVictory {
+        public static void Postfix(AbstractPlayer p) {
+            DomainCardsPanel.inst.clearDomainCards();
+            BaseMod.unsubscribe(DomainCardsPanel.inst);
         }
     }
 }

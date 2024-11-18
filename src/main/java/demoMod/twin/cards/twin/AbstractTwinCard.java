@@ -157,4 +157,13 @@ public abstract class AbstractTwinCard extends CustomCard {
             coporateCostReduced = 0;
         }
     }
+
+    @Override
+    public AbstractCard makeStatEquivalentCopy() {
+        AbstractTwinCard cpy = (AbstractTwinCard) super.makeStatEquivalentCopy();
+        cpy.coporateCostReduced = this.coporateCostReduced;
+        cpy.traceAmount = this.traceAmount;
+        cpy.baseTraceAmount = this.baseTraceAmount;
+        return cpy;
+    }
 }

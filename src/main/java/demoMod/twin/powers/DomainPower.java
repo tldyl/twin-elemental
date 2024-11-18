@@ -6,17 +6,22 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import demoMod.twin.cards.twin.AbstractTwinCard;
+import demoMod.twin.helpers.PowerRegionLoader;
 import demoMod.twin.interfaces.OnDomainRemoveSubscriber;
 import demoMod.twin.interfaces.OnDomainTriggerSubscriber;
+import demoMod.twin.ui.DomainCardsPanel;
 
 import java.util.Collections;
 
 public class DomainPower extends TwoAmountPower {
     private final String rawDescription;
     private final Runnable effect;
+    private final AbstractTwinCard domainCard;
 
-    public DomainPower(AbstractCreature owner, int amount, String id, String name, Runnable effect, String description, int magicNumber) {
+    public DomainPower(AbstractTwinCard domainCard, AbstractCreature owner, int amount, String id, String name, Runnable effect, String description, int magicNumber) {
         this.ID = id;
+        this.domainCard = domainCard;
         this.name = name;
         this.owner = owner;
         this.amount = amount;
@@ -24,7 +29,12 @@ public class DomainPower extends TwoAmountPower {
         this.rawDescription = description;
         this.amount2 = magicNumber;
         updateDescription();
-        loadRegion("afterImage");
+        PowerRegionLoader.load(this);
+    }
+
+    @Override
+    public void onInitialApplication() {
+        DomainCardsPanel.inst.addDomainCard(ID, domainCard);
     }
 
     @Override
@@ -33,10 +43,17 @@ public class DomainPower extends TwoAmountPower {
     }
 
     @Override
+    public void stackPower(int stackAmount) {
+        super.stackPower(stackAmount);
+        DomainCardsPanel.inst.stackDomainEffect(ID, stackAmount);
+    }
+
+    @Override
     public void atStartOfTurn() {
         this.flash();
         effect.run();
         addToBot(new ReducePowerAction(owner, owner, this, 1));
+        DomainCardsPanel.inst.reduceDomainAmount(ID);
         for (AbstractPower power : AbstractDungeon.player.powers) {
             if (power instanceof OnDomainTriggerSubscriber) {
                 ((OnDomainTriggerSubscriber) power).onDomainTrigger(Collections.singletonList(this));
@@ -66,5 +83,6 @@ public class DomainPower extends TwoAmountPower {
                 ((OnDomainRemoveSubscriber) power).onDomainRemove(this);
             }
         }
+        DomainCardsPanel.inst.removeDomainCard(ID);
     }
 }

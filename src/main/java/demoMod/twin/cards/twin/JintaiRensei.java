@@ -2,10 +2,13 @@ package demoMod.twin.cards.twin;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.RepairPower;
 import com.megacrit.cardcrawl.vfx.combat.OfferingEffect;
 import demoMod.twin.TwinElementalMod;
 import demoMod.twin.enums.CardTagsEnum;
@@ -39,6 +42,10 @@ public class JintaiRensei extends AbstractTwinCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new VFXAction(new OfferingEffect(), 1.0F));
+        addToBot(new LoseHPAction(p, p, p.currentHealth / 2));
+        if (p.currentHealth / 2 > 0) {
+            addToBot(new ApplyPowerAction(p, p, new RepairPower(p, p.currentHealth / 2)));
+        }
         addToBot(new AbstractGameAction() {
             @Override
             public void update() {

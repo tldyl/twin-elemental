@@ -366,8 +366,8 @@
   },
   "Twin:Butterfly": {
     "NAME": "蝴蝶",
-    "DESCRIPTION": "抽 !M! 张牌。 NL 获得 [E] [E] [E] 。 NL 每有一张其他手牌，抽牌数和 [E] 获得量降低1。 NL 消耗 。",
-    "UPGRADE_DESCRIPTION": "抽 !M! 张牌。 NL 获得 [E] [E] [E] [E] 。 NL 每有一张其他手牌，抽牌数和 [E] 获得量降低1。 NL 消耗 。"
+    "DESCRIPTION": "抽 !M! 张牌。 NL 获得 [E] [E] [E] [E] 。 NL 每有一张其他手牌，抽牌数和 [E] 获得量降低1(最少为1)。 NL 消耗 。",
+    "UPGRADE_DESCRIPTION": "抽 !M! 张牌。 NL 获得 [E] [E] [E] [E] [E] 。 NL 每有一张其他手牌，抽牌数和 [E] 获得量降低1(最少为1)。 NL 消耗 。"
   },
   "Twin:CosmosDomain": {
     "NAME": "天地大阵",
@@ -379,7 +379,7 @@
   },
   "Twin:JintaiRensei": {
     "NAME": "人体炼成",
-    "DESCRIPTION": "twin:连携 。 NL 获得 !M! 点最大生命。 NL 消耗 。"
+    "DESCRIPTION": "twin:连携 。 NL 失去当前生命值一半的生命。 NL 获得 !M! 点最大生命。 NL 在战斗结束时，回复从这张牌中失去的生命。 NL 消耗 。"
   },
   "Twin:Seasons": {
     "NAME": "天有四时",

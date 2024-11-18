@@ -36,6 +36,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 
 @SpireInitializer
 public class TwinElementalMod implements EditCharactersSubscriber,
@@ -63,6 +64,7 @@ public class TwinElementalMod implements EditCharactersSubscriber,
     public static Color mainTwinColor = new Color(0.75686F, 0.9294F, 1.0F, 1.0F);
     private static final List<AbstractGameAction> actionList = new ArrayList<>();
     private static final List<AbstractGameAction> parallelActions = new ArrayList<>();
+    public static final List<Consumer<SpriteBatch>> renderable = new ArrayList<>();
     private FrameBuffer fbo;
 
     public static final List<BiConsumer<SpriteBatch, TextureRegion>> postProcessQueue = new ArrayList<>();
@@ -275,7 +277,10 @@ public class TwinElementalMod implements EditCharactersSubscriber,
 
     @Override
     public void receivePostRender(SpriteBatch sb) {
-
+        for (Consumer<SpriteBatch> item : renderable) {
+            item.accept(sb);
+        }
+        renderable.clear();
     }
 
     public static void addToBot(AbstractGameAction action) {
