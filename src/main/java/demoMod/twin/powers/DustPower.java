@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.stances.AbstractStance;
 import demoMod.twin.TwinElementalMod;
+import demoMod.twin.helpers.PowerRegionLoader;
 
 public class DustPower extends TwoAmountPower {
     public static final String POWER_ID = TwinElementalMod.makeID("DustPower");
@@ -21,7 +22,7 @@ public class DustPower extends TwoAmountPower {
         this.amount = amount;
         this.amount2 = amount;
         this.updateDescription();
-        loadRegion("focus");
+        PowerRegionLoader.load(this);
     }
 
     @Override

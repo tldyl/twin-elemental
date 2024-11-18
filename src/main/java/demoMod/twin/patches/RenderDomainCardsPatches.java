@@ -13,7 +13,7 @@ public class RenderDomainCardsPatches {
             clz = AbstractPlayer.class,
             method = "render"
     )
-    public static class RenderNextTurnCardsPatch {
+    public static class RenderDomainCardsPatch {
         @SpireInsertPatch(locator = Locator.class)
         public static void PrefixPatchRender(AbstractPlayer player, SpriteBatch sb) {
             DomainCardsPanel.inst.render(sb);

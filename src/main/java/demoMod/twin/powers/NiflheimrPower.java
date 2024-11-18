@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.*;
 import com.megacrit.cardcrawl.stances.AbstractStance;
 import demoMod.twin.TwinElementalMod;
+import demoMod.twin.helpers.PowerRegionLoader;
 import demoMod.twin.stances.Freeze;
 
 import java.util.stream.Collectors;
@@ -27,7 +28,7 @@ public class NiflheimrPower extends AbstractPower {
         this.owner = owner;
         this.amount = amount;
         this.updateDescription();
-        loadRegion("flameBarrier");
+        PowerRegionLoader.load(this);
         this.upgraded = upgraded;
         if (upgraded) {
             this.ID += "+";
