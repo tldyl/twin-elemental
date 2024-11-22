@@ -1,5 +1,7 @@
 package demoMod.twin.cards.twin;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -20,7 +22,8 @@ public class KingIceBound extends AbstractTwinCard {
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    public static final String IMG_PATH = "cards/todo";
+    public static final String IMG_PATH = "cards/KingIceBound";
+    private static final TextureAtlas.AtlasRegion UPGRADE_IMG = new TextureAtlas.AtlasRegion(new Texture(TwinElementalMod.getResourcePath("cards/KingIceBound+_attack.png")), 0, 0, 250, 190);
 
     private static final CardType TYPE = CardType.ATTACK;
     private static final CardRarity RARITY = CardRarity.RARE;
@@ -49,6 +52,8 @@ public class KingIceBound extends AbstractTwinCard {
         return () -> {
             upgradeDamage(4);
             upgradeMagicNumber(1);
+            this.portrait = UPGRADE_IMG;
+            this.textureImg = TwinElementalMod.getResourcePath("cards/KingIceBound+_attack.png");
         };
     }
 

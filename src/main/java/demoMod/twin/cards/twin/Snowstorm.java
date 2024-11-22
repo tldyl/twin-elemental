@@ -20,7 +20,7 @@ public class Snowstorm extends AbstractTwinCard {
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    public static final String IMG_PATH = "cards/todo";
+    public static final String IMG_PATH = "cards/Snowstorm";
 
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
     private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.UNCOMMON;

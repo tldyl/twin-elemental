@@ -18,7 +18,7 @@ public class HotWind extends AbstractTwinCard {
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    public static final String IMG_PATH = "cards/todo";
+    public static final String IMG_PATH = "cards/HotWind";
 
     private static final CardType TYPE = CardType.ATTACK;
     private static final CardRarity RARITY = CardRarity.UNCOMMON;

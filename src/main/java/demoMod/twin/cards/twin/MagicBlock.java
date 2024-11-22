@@ -18,7 +18,7 @@ public class MagicBlock extends AbstractTwinCard {
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    public static final String IMG_PATH = "cards/todo";
+    public static final String IMG_PATH = "cards/MagicBlock";
 
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.UNCOMMON;

@@ -20,7 +20,7 @@ public class HeatWave extends AbstractTwinCard {
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    public static final String IMG_PATH = "cards/todo";
+    public static final String IMG_PATH = "cards/HeatWave";
 
     private static final CardType TYPE = CardType.ATTACK;
     private static final CardRarity RARITY = CardRarity.COMMON;

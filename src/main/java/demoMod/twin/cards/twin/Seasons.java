@@ -1,5 +1,7 @@
 package demoMod.twin.cards.twin;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -14,7 +16,8 @@ public class Seasons extends AbstractTwinCard {
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    public static final String IMG_PATH = "cards/todo";
+    public static final String IMG_PATH = "cards/Seasons";
+    private static final TextureAtlas.AtlasRegion UPGRADE_IMG = new TextureAtlas.AtlasRegion(new Texture(TwinElementalMod.getResourcePath("cards/Seasons+_skill.png")), 0, 0, 250, 190);
 
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.RARE;
@@ -37,7 +40,11 @@ public class Seasons extends AbstractTwinCard {
 
     @Override
     public Runnable getUpgradeAction() {
-        return () -> upgradeMagicNumber(1);
+        return () -> {
+            upgradeMagicNumber(1);
+            this.portrait = UPGRADE_IMG;
+            this.textureImg = TwinElementalMod.getResourcePath("cards/Seasons+_skill.png");
+        };
     }
 
     @Override

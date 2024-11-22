@@ -1,5 +1,7 @@
 package demoMod.twin.cards.twin;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -17,7 +19,8 @@ public class Karma extends AbstractTwinCard {
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    public static final String IMG_PATH = "cards/todo";
+    public static final String IMG_PATH = "cards/Karma";
+    private static final TextureAtlas.AtlasRegion UPGRADE_IMG = new TextureAtlas.AtlasRegion(new Texture(TwinElementalMod.getResourcePath("cards/Karma+_skill.png")), 0, 0, 250, 190);
 
     private static final CardType TYPE = CardType.SKILL;
     private static final CardRarity RARITY = CardRarity.COMMON;
@@ -46,6 +49,8 @@ public class Karma extends AbstractTwinCard {
         return () -> {
             upgradeBlock(3);
             upgradeMagicNumber(1);
+            this.portrait = UPGRADE_IMG;
+            this.textureImg = TwinElementalMod.getResourcePath("cards/Karma+_skill.png");
         };
     }
 
