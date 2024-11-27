@@ -4,6 +4,7 @@ import basemod.Pair;
 import basemod.abstracts.CustomRelic;
 import basemod.abstracts.CustomSavable;
 import com.badlogic.gdx.graphics.Texture;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -14,6 +15,7 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import demoMod.twin.TwinElementalMod;
+import demoMod.twin.actions.SwitchLeaderAction;
 
 public class DistantSavior extends CustomRelic implements CustomSavable<Pair<String, Integer>> {
     public static final String ID = TwinElementalMod.makeID("DistantSavior");
@@ -49,6 +51,13 @@ public class DistantSavior extends CustomRelic implements CustomSavable<Pair<Str
                 card.upgrade();
             }
             addToBot(new MakeTempCardInHandAction(card));
+            addToBot(new AbstractGameAction() {
+                @Override
+                public void update() {
+                    SwitchLeaderAction.updateTwinCardBackground(AbstractDungeon.player.hand);
+                    isDone = true;
+                }
+            });
             this.counter++;
         }
     }

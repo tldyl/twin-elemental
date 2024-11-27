@@ -25,6 +25,7 @@ public abstract class AbstractTwinCard extends CustomCard {
     protected int coporateCostReduced;
     public int traceAmount;
     public int baseTraceAmount;
+    public boolean traceUpgraded;
     private static final Texture DESCRIPTION_ORB_BLAZE = new Texture(TwinElementalMod.getResourcePath("512/card_small_blaze_orb.png"));
     private static final Texture DESCRIPTION_ORB_FREEZE = new Texture(TwinElementalMod.getResourcePath("512/card_small_freeze_orb.png"));
 
@@ -75,6 +76,7 @@ public abstract class AbstractTwinCard extends CustomCard {
     public void upgradeTraceAmount(int amount) {
         this.baseTraceAmount += amount;
         this.traceAmount = this.baseTraceAmount;
+        traceUpgraded = true;
     }
 
     protected Supplier<Boolean> getGlowCondition() {
@@ -118,9 +120,9 @@ public abstract class AbstractTwinCard extends CustomCard {
         sb.setColor(ReflectionHacks.getPrivate(this, AbstractCard.class, "renderColor"));
         AbstractPlayer p = AbstractDungeon.player;
         if (p != null) {
-            if (p.stance instanceof Blaze && hasTag(CardTagsEnum.PREFER_BLAZE)) {
+            if (p.stance instanceof Blaze) {
                 sb.draw(DESCRIPTION_ORB_BLAZE, this.current_x + x * Settings.scale * this.drawScale + region.offsetX * Settings.scale, this.current_y + y * Settings.scale * this.drawScale - 28.0F * Settings.scale, 0.0F, 0.0F, (float)region.packedWidth, (float)region.packedHeight, this.drawScale * Settings.scale, this.drawScale * Settings.scale, 0.0F, region.getRegionX(), region.getRegionY(), region.getRegionWidth(), region.getRegionHeight(), false, false);
-            } else if (p.stance instanceof Freeze && hasTag(CardTagsEnum.PREFER_FREEZE)) {
+            } else if (p.stance instanceof Freeze) {
                 sb.draw(DESCRIPTION_ORB_FREEZE, this.current_x + x * Settings.scale * this.drawScale + region.offsetX * Settings.scale, this.current_y + y * Settings.scale * this.drawScale - 28.0F * Settings.scale, 0.0F, 0.0F, (float)region.packedWidth, (float)region.packedHeight, this.drawScale * Settings.scale, this.drawScale * Settings.scale, 0.0F, region.getRegionX(), region.getRegionY(), region.getRegionWidth(), region.getRegionHeight(), false, false);
             } else {
                 super.renderSmallEnergy(sb, region, x, y);

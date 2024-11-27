@@ -43,14 +43,6 @@ public class HotDomain extends AbstractTwinCard {
     }
 
     @Override
-    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        if (!(p.stance instanceof Blaze)) {
-            this.cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[1];
-        }
-        return super.canUse(p, m) && p.stance instanceof Blaze;
-    }
-
-    @Override
     public Runnable getUpgradeAction() {
         return () -> {
             upgradeDamage(4);
@@ -66,9 +58,12 @@ public class HotDomain extends AbstractTwinCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new VFXAction(p, new HeatWaveEffect(), 1.2F));
-        CardCrawlGame.sound.playA("GHOST_ORB_IGNITE_1", -0.8F);
-        addToBot(new DamageAllEnemiesAction(p, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.FIRE));
+        if (p.stance instanceof Blaze) {
+            addToBot(new VFXAction(p, new HeatWaveEffect(), 1.2F));
+            CardCrawlGame.sound.playA("GHOST_ORB_IGNITE_1", -0.8F);
+            addToBot(new DamageAllEnemiesAction(p, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.FIRE));
+        }
+
         addToBot(new ApplyPowerAction(p, p, getDomainEffect().get()));
     }
 }

@@ -34,7 +34,7 @@ public class Razer extends CustomRelic {
 
     @Override
     public int onAttacked(DamageInfo info, int damageAmount) {
-        if (info.owner != null && info.type == DamageInfo.DamageType.NORMAL) {
+        if (info.owner != null && info.type == DamageInfo.DamageType.NORMAL && damageAmount > 0) {
             this.flash();
             this.addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, this));
             addToBot(new MakeTempCardInDiscardAction(new Dazed(), 1));

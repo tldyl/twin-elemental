@@ -1,6 +1,8 @@
 package demoMod.twin;
 
 import basemod.BaseMod;
+import basemod.ModLabeledToggleButton;
+import basemod.ModPanel;
 import basemod.helpers.RelicType;
 import basemod.helpers.ScreenPostProcessorManager;
 import basemod.interfaces.*;
@@ -12,12 +14,16 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.FrameBuffer;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
+import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.FontHelper;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.*;
 import demoMod.twin.blights.FirstPosition;
 import demoMod.twin.cards.tempCards.Cooperate;
@@ -32,6 +38,7 @@ import demoMod.twin.potions.HandWarmer;
 import demoMod.twin.potions.Refrigerant;
 import demoMod.twin.relics.*;
 
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
@@ -66,6 +73,16 @@ public class TwinElementalMod implements EditCharactersSubscriber,
     private static final List<AbstractGameAction> parallelActions = new ArrayList<>();
     public static final List<Consumer<SpriteBatch>> renderable = new ArrayList<>();
     private FrameBuffer fbo;
+    public static SpireConfig saveData;
+    public static boolean betaDefeatArt = false;
+
+    static {
+        try {
+            saveData = new SpireConfig("TwinElementalMod", "twinElementalMod.properties");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public static final List<BiConsumer<SpriteBatch, TextureRegion>> postProcessQueue = new ArrayList<>();
 
@@ -273,6 +290,30 @@ public class TwinElementalMod implements EditCharactersSubscriber,
         BaseMod.addPotion(HandWarmer.class, new Color(0.9F, 0.3F, 0.2F, 1.0F), Color.RED, null, HandWarmer.ID, AbstractPlayerEnum.TWIN);
         BaseMod.addPotion(Refrigerant.class, new Color(0.0F, 0.4F, 1.0F, 1.0F), Color.SKY, null, Refrigerant.ID, AbstractPlayerEnum.TWIN);
         BaseMod.addPotion(AcceleratePotion.class, new Color(0.5F, 0.4F, 1.0F, 1.0F), Color.SKY, null, AcceleratePotion.ID, AbstractPlayerEnum.TWIN);
+
+        UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(makeID("ModPanel"));
+        try {
+            saveData.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        if (saveData.has("betaDefeatArt")) {
+            betaDefeatArt = saveData.getBool("betaDefeatArt");
+        }
+        ModPanel settingsPanel = new ModPanel();
+        ModLabeledToggleButton betaDefeatArtOption = new ModLabeledToggleButton(uiStrings.TEXT[0], 350.0F, 700.0F, Color.WHITE, FontHelper.buttonLabelFont, betaDefeatArt, settingsPanel, (me) -> {},
+                (me) -> {
+                    betaDefeatArt = me.enabled;
+                    saveData.setBool("betaDefeatArt", betaDefeatArt);
+                    try {
+                        saveData.save();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+        );
+        settingsPanel.addUIElement(betaDefeatArtOption);
+        BaseMod.registerModBadge(ImageMaster.loadImage(getResourcePath("ui/badge.png")), "TwinElemental", "Everyone", "TODO", settingsPanel);
     }
 
     @Override

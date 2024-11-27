@@ -11,10 +11,10 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.vfx.combat.ScreenOnFireEffect;
 import demoMod.twin.TwinElementalMod;
 import demoMod.twin.enums.CardTagsEnum;
 import demoMod.twin.helpers.DomainGenerator;
+import demoMod.twin.vfx.ScreenOnFireEffect;
 
 import java.util.function.Supplier;
 

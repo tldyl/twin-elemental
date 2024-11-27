@@ -40,7 +40,7 @@ public class Butterfly extends AbstractTwinCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         int drawAmount = this.magicNumber;
-        int energyAmount = upgraded ? 4 : 3;
+        int energyAmount = this.magicNumber;
         drawAmount -= p.hand.size() - 1;
         energyAmount -= p.hand.size() - 1;
         if (drawAmount < 1) drawAmount = 1;

@@ -8,12 +8,15 @@ import demoMod.twin.TwinElementalMod;
 
 public class HeatWaveEffect extends AbstractGameEffect {
     private static ShaderProgram shader;
+    private static boolean shaderCompiled = true;
 
     public HeatWaveEffect() {
         if (shader == null) {
             shader = new ShaderProgram(Gdx.files.internal("TwinShaders/heatWave/vertex.glsl"), Gdx.files.internal("TwinShaders/heatWave/fragment.glsl"));
             if (!shader.isCompiled()) {
-                throw new RuntimeException(shader.getLog());
+                System.out.println("Twin Elemental Mod: [WARN] HeatWaveEffect: shader compile failed.");
+                new RuntimeException(shader.getLog()).printStackTrace();
+                shaderCompiled = false;
             }
         }
         this.duration = this.startingDuration = 2.0F;
@@ -26,13 +29,15 @@ public class HeatWaveEffect extends AbstractGameEffect {
             this.isDone = true;
             return;
         }
-        TwinElementalMod.postProcessQueue.add((sb, region) -> {
-            sb.setShader(shader);
-            shader.setUniformf("iResolution", Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-            shader.setUniformf("iTime", this.startingDuration - this.duration);
-            sb.draw(region, 0, 0);
-            sb.setShader(null);
-        });
+        if (shaderCompiled) {
+            TwinElementalMod.postProcessQueue.add((sb, region) -> {
+                sb.setShader(shader);
+                shader.setUniformf("iResolution", Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+                shader.setUniformf("iTime", this.startingDuration - this.duration);
+                sb.draw(region, 0, 0);
+                sb.setShader(null);
+            });
+        }
     }
 
     @Override

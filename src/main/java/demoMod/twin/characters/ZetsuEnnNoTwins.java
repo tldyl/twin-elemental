@@ -1,5 +1,6 @@
 package demoMod.twin.characters;
 
+import basemod.ReflectionHacks;
 import basemod.abstracts.CustomPlayer;
 import basemod.animations.G3DJAnimation;
 import com.badlogic.gdx.graphics.Color;
@@ -47,9 +48,19 @@ public class ZetsuEnnNoTwins extends CustomPlayer {
         this.stance = new Blaze();
         this.loadAnimation(TwinElementalMod.getResourcePath("char/break_fire_and_ice.atlas"), TwinElementalMod.getResourcePath("char/break_fire_and_ice.json"), 3.0F);
         this.state.setAnimation(0, "fire_idle", true);
+        this.state.setTimeScale(2.0F);
         if (ModHelper.enabledMods.size() > 0 && (ModHelper.isModEnabled("Diverse") || ModHelper.isModEnabled("Chimera") || ModHelper.isModEnabled("Blue Cards"))) {
             this.masterMaxOrbs = 1;
         }
+    }
+
+    @Override
+    public void playDeathAnimation() {
+        if (this.img != null) {
+            this.img.dispose();
+        }
+        this.img = TwinElementalMod.betaDefeatArt ? new Texture(TwinElementalMod.getResourcePath("char/corpse.png")) : new Texture(TwinElementalMod.getResourcePath("char/corpse2.png"));
+        ReflectionHacks.setPrivate(this, AbstractPlayer.class, "renderCorpse", true);
     }
 
     @Override

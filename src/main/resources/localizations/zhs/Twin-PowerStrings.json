@@ -78,7 +78,7 @@
   "Twin:HanabiPower": {
     "NAME": "花火",
     "DESCRIPTIONS": [
-      "在你的回合结束时， #y加速 #b%d 次。"
+      "在你的回合开始时， #y加速 #b%d 次。"
     ]
   },
   "Twin:AsahiPower": {

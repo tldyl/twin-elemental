@@ -41,7 +41,7 @@ public class TraceAmount extends DynamicVariable {
     public boolean upgraded(AbstractCard card) {
         if (card instanceof AbstractTwinCard) {
             AbstractTwinCard twinCard = (AbstractTwinCard) card;
-            return twinCard.traceAmount > twinCard.baseTraceAmount;
+            return twinCard.traceAmount > twinCard.baseTraceAmount || (twinCard.traceUpgraded && twinCard.traceAmount >= twinCard.baseTraceAmount);
         }
         return false;
     }

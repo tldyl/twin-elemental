@@ -6,12 +6,15 @@ import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import demoMod.twin.TwinElementalMod;
 import demoMod.twin.enums.CardTagsEnum;
 import demoMod.twin.stances.Blaze;
+
+import java.util.function.Supplier;
 
 public class LightingSlash extends AbstractTwinCard {
     public static final String ID = TwinElementalMod.makeID("LightingSlash");
@@ -32,6 +35,11 @@ public class LightingSlash extends AbstractTwinCard {
         this.baseDamage = 6;
         this.baseMagicNumber = this.magicNumber = 2;
         this.tags.add(CardTagsEnum.PREFER_BLAZE);
+    }
+
+    @Override
+    protected Supplier<Boolean> getGlowCondition() {
+        return () -> AbstractDungeon.getMonsters().monsters.stream().anyMatch(m -> !m.isDeadOrEscaped() && m.hasPower(VulnerablePower.POWER_ID));
     }
 
     @Override

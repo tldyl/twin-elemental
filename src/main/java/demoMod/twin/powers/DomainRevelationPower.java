@@ -5,6 +5,7 @@ import basemod.cardmods.EtherealMod;
 import basemod.cardmods.ExhaustMod;
 import basemod.helpers.CardModifierManager;
 import com.badlogic.gdx.math.MathUtils;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -13,6 +14,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import demoMod.twin.TwinElementalMod;
+import demoMod.twin.actions.SwitchLeaderAction;
 import demoMod.twin.enums.CardTagsEnum;
 
 import java.util.ArrayList;
@@ -61,6 +63,13 @@ public class DomainRevelationPower extends AbstractPower {
             CardModifierManager.addModifier(c, new ExhaustMod());
             CardModifierManager.addModifier(c, new EtherealMod());
             addToBot(new MakeTempCardInHandAction(c));
+            addToBot(new AbstractGameAction() {
+                @Override
+                public void update() {
+                    SwitchLeaderAction.updateTwinCardBackground(AbstractDungeon.player.hand);
+                    isDone = true;
+                }
+            });
         });
     }
 }

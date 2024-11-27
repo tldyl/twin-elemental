@@ -40,14 +40,6 @@ public class ColdDomain extends AbstractTwinCard {
     }
 
     @Override
-    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        if (!(p.stance instanceof Freeze)) {
-            this.cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[1];
-        }
-        return super.canUse(p, m) && p.stance instanceof Freeze;
-    }
-
-    @Override
     public Runnable getUpgradeAction() {
         return () -> {
             upgradeBlock(4);
@@ -69,7 +61,10 @@ public class ColdDomain extends AbstractTwinCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new GainBlockAction(p, p, this.block));
+        if (p.stance instanceof Freeze) {
+            addToBot(new GainBlockAction(p, p, this.block));
+        }
+
         addToBot(new ApplyPowerAction(p, p, getDomainEffect().get()));
     }
 }

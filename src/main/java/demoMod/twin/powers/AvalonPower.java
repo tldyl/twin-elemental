@@ -29,7 +29,7 @@ public class AvalonPower extends AbstractPower {
 
     @Override
     public void updateDescription() {
-        this.description = String.format(DESC[0], this.amount * 6, this.amount);
+        this.description = String.format(DESC[0], this.amount * 3, this.amount);
     }
 
     @Override
@@ -47,7 +47,7 @@ public class AvalonPower extends AbstractPower {
     public void onUseCard(AbstractCard card, UseCardAction action) {
         if (AbstractDungeon.player.hand.group.indexOf(card) == 5) {
             this.flash();
-            addToBot(new GainBlockAction(owner, owner, this.amount * 6));
+            addToBot(new GainBlockAction(owner, owner, this.amount * 3));
             addToBot(new DrawCardAction(this.amount));
         }
     }

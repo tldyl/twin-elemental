@@ -29,7 +29,7 @@ public class HanabiPower extends AbstractPower {
     }
 
     @Override
-    public void atEndOfTurn(boolean isPlayer) {
+    public void atStartOfTurn() {
         this.flash();
         for (int i=0;i<this.amount;i++) {
             addToBot(new BoostAction());
