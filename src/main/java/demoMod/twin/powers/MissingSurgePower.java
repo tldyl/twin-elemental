@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.stances.AbstractStance;
 import demoMod.twin.TwinElementalMod;
+import demoMod.twin.helpers.PowerRegionLoader;
 import demoMod.twin.stances.Blaze;
 
 public class MissingSurgePower extends AbstractPower {
@@ -21,7 +22,7 @@ public class MissingSurgePower extends AbstractPower {
         this.owner = owner;
         this.amount = amount;
         this.updateDescription();
-        loadRegion("rushdown");
+        PowerRegionLoader.load(this);
     }
 
     @Override

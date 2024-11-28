@@ -27,7 +27,6 @@ public class Volcano extends AbstractTwinCard {
     public Volcano() {
         super(ID, NAME, TwinElementalMod.getResourcePath(IMG_PATH), COST, DESCRIPTION, TYPE, RARITY, TARGET);
         this.tags.add(CardTagsEnum.PREFER_BLAZE);
-        this.tags.add(CardTagsEnum.DOMAIN);
     }
 
     @Override

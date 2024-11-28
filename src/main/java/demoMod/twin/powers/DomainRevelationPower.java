@@ -16,6 +16,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import demoMod.twin.TwinElementalMod;
 import demoMod.twin.actions.SwitchLeaderAction;
 import demoMod.twin.enums.CardTagsEnum;
+import demoMod.twin.helpers.PowerRegionLoader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +41,7 @@ public class DomainRevelationPower extends AbstractPower {
             this.name += "+";
         }
         this.updateDescription();
-        loadRegion("hello");
+        PowerRegionLoader.load(this);
     }
 
     @Override

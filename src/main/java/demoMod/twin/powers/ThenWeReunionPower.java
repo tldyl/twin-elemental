@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import demoMod.twin.TwinElementalMod;
+import demoMod.twin.helpers.PowerRegionLoader;
 
 public class ThenWeReunionPower extends AbstractPower {
     public static final String POWER_ID = TwinElementalMod.makeID("ThenWeReunionPower");
@@ -19,7 +20,7 @@ public class ThenWeReunionPower extends AbstractPower {
         this.amount = -1;
         this.type = PowerType.DEBUFF;
         this.updateDescription();
-        loadRegion("rushdown");
+        PowerRegionLoader.load(this);
     }
 
     @Override

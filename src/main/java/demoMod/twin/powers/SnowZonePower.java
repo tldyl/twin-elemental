@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.stances.AbstractStance;
 import demoMod.twin.TwinElementalMod;
+import demoMod.twin.helpers.PowerRegionLoader;
 
 import java.util.stream.Collectors;
 
@@ -27,7 +28,7 @@ public class SnowZonePower extends AbstractPower {
         this.owner = owner;
         this.amount = amount;
         this.updateDescription();
-        loadRegion("flameBarrier");
+        PowerRegionLoader.load(this);
     }
 
     @Override

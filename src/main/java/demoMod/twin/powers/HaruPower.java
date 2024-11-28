@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import demoMod.twin.TwinElementalMod;
 import demoMod.twin.enums.CardTagsEnum;
+import demoMod.twin.helpers.PowerRegionLoader;
 
 public class HaruPower extends AbstractPower {
     public static final String POWER_ID = TwinElementalMod.makeID("HaruPower");
@@ -22,7 +23,7 @@ public class HaruPower extends AbstractPower {
         this.owner = owner;
         this.amount = amount;
         this.updateDescription();
-        loadRegion("rushdown");
+        PowerRegionLoader.load(this);
     }
 
     @Override

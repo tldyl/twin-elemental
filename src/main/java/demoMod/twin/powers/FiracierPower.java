@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.stances.AbstractStance;
 import demoMod.twin.TwinElementalMod;
+import demoMod.twin.helpers.PowerRegionLoader;
 
 public class FiracierPower extends AbstractPower {
     public static final String POWER_ID = TwinElementalMod.makeID("FiracierPower");
@@ -23,7 +24,7 @@ public class FiracierPower extends AbstractPower {
         this.owner = owner;
         this.amount = amount;
         this.updateDescription();
-        loadRegion("flameBarrier");
+        PowerRegionLoader.load(this);
     }
 
     @Override

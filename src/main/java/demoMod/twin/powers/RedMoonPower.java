@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import demoMod.twin.TwinElementalMod;
+import demoMod.twin.helpers.PowerRegionLoader;
 
 public class RedMoonPower extends AbstractPower {
     public static final String POWER_ID = TwinElementalMod.makeID("RedMoonPower");
@@ -21,7 +22,7 @@ public class RedMoonPower extends AbstractPower {
         this.amount = amount;
         this.type = PowerType.DEBUFF;
         this.updateDescription();
-        loadRegion("vulnerable");
+        PowerRegionLoader.load(this);
     }
 
     @Override

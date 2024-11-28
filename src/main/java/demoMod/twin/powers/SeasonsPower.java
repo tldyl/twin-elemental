@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.stances.AbstractStance;
 import demoMod.twin.TwinElementalMod;
 import demoMod.twin.actions.BoostAction;
+import demoMod.twin.helpers.PowerRegionLoader;
 
 public class SeasonsPower extends AbstractPower {
     public static final String POWER_ID = TwinElementalMod.makeID("SeasonsPower");
@@ -22,7 +23,7 @@ public class SeasonsPower extends AbstractPower {
         this.owner = owner;
         this.amount = amount;
         this.updateDescription();
-        loadRegion("rushdown");
+        PowerRegionLoader.load(this);
     }
 
     @Override

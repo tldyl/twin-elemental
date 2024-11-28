@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import demoMod.twin.TwinElementalMod;
+import demoMod.twin.helpers.PowerRegionLoader;
 
 public class AvalonPower extends AbstractPower {
     public static final String POWER_ID = TwinElementalMod.makeID("AvalonPower");
@@ -24,7 +25,7 @@ public class AvalonPower extends AbstractPower {
         this.owner = owner;
         this.amount = amount;
         this.updateDescription();
-        loadRegion("flameBarrier");
+        PowerRegionLoader.load(this);
     }
 
     @Override

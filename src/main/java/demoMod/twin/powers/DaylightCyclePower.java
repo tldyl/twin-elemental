@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import demoMod.twin.TwinElementalMod;
+import demoMod.twin.helpers.PowerRegionLoader;
 
 public class DaylightCyclePower extends TwoAmountPower {
     public static final String POWER_ID = TwinElementalMod.makeID("DaylightCyclePower");
@@ -24,7 +25,7 @@ public class DaylightCyclePower extends TwoAmountPower {
         this.amount = amount;
         this.amount2 = 12;
         this.updateDescription();
-        loadRegion("flameBarrier");
+        PowerRegionLoader.load(this);
     }
 
     public void playApplyPowerSfx() {

@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import demoMod.twin.TwinElementalMod;
 import demoMod.twin.cards.twin.AbstractTwinCard;
+import demoMod.twin.helpers.PowerRegionLoader;
 import demoMod.twin.interfaces.OnDomainRemoveSubscriber;
 
 public class YuushaPower extends AbstractPower implements OnDomainRemoveSubscriber {
@@ -23,7 +24,7 @@ public class YuushaPower extends AbstractPower implements OnDomainRemoveSubscrib
         this.owner = owner;
         this.amount = -1;
         this.updateDescription();
-        loadRegion("flameBarrier");
+        PowerRegionLoader.load(this);
     }
 
     @Override
