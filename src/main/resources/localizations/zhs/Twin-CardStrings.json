@@ -104,7 +104,7 @@
   },
   "Twin:Snowstorm": {
     "NAME": "雪走",
-    "DESCRIPTION": "给予 !M! 层虚弱 ，抽 !M! 张 twin:结界 牌。 NL twin:霜 ：本回合内获得 !M! 层 twin:同调 。"
+    "DESCRIPTION": "给予所有敌人 !M! 层 虚弱 ，抽 !M! 张 twin:结界 牌。 NL twin:霜 ：本回合内获得 !M! 层 twin:同调 。"
   },
   "Twin:Firacier": {
     "NAME": "炎川",
@@ -210,8 +210,8 @@
   },
   "Twin:Stasis": {
     "NAME": "凪",
-    "DESCRIPTION": "获得 [E] [E] [E] 。 NL 你本回合不能再改变 姿态 。",
-    "UPGRADE_DESCRIPTION": "获得 [E] [E] [E] [E] 。 NL 你本回合不能再改变 姿态 。"
+    "DESCRIPTION": "获得 [E] [E] [E] 。 NL 你本回合不能再获得 [E] 。",
+    "UPGRADE_DESCRIPTION": "获得 [E] [E] [E] [E] 。 NL 你本回合不能再获得 [E] 。"
   },
   "Twin:SnowZone": {
     "NAME": "雪域",

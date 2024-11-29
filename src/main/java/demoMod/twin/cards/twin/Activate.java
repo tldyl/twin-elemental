@@ -32,7 +32,7 @@ public class Activate extends AbstractTwinCard {
 
     public Activate() {
         super(ID, NAME, TwinElementalMod.getResourcePath(IMG_PATH), COST, DESCRIPTION, TYPE, RARITY, TARGET);
-        this.baseDamage = 7;
+        this.baseDamage = 9;
         this.baseMagicNumber = this.magicNumber = 1;
     }
 

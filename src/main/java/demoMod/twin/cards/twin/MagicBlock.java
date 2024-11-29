@@ -28,14 +28,14 @@ public class MagicBlock extends AbstractTwinCard {
 
     public MagicBlock() {
         super(ID, NAME, TwinElementalMod.getResourcePath(IMG_PATH), COST, DESCRIPTION, TYPE, RARITY, TARGET);
-        this.baseBlock = 6;
+        this.baseBlock = 8;
         this.baseMagicNumber = this.magicNumber = 2;
     }
 
     @Override
     public Runnable getUpgradeAction() {
         return () -> {
-            upgradeBlock(2);
+            upgradeBlock(3);
             upgradeMagicNumber(1);
         };
     }

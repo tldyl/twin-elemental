@@ -6,8 +6,8 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.watcher.CannotChangeStancePower;
 import demoMod.twin.TwinElementalMod;
+import demoMod.twin.powers.NoGainEnergyPower;
 
 public class Stasis extends AbstractTwinCard {
     public static final String ID = TwinElementalMod.makeID("Stasis");
@@ -38,6 +38,6 @@ public class Stasis extends AbstractTwinCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainEnergyAction(upgraded ? 4 : 3));
-        addToBot(new ApplyPowerAction(p, p, new CannotChangeStancePower(p)));
+        addToBot(new ApplyPowerAction(p, p, new NoGainEnergyPower(p)));
     }
 }

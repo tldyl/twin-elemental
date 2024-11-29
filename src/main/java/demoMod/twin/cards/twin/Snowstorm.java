@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
@@ -13,6 +14,8 @@ import demoMod.twin.enums.CardTagsEnum;
 import demoMod.twin.powers.LoseTracePower;
 import demoMod.twin.powers.TracePower;
 import demoMod.twin.stances.Freeze;
+
+import java.util.stream.Collectors;
 
 public class Snowstorm extends AbstractTwinCard {
     public static final String ID = TwinElementalMod.makeID("Snowstorm");
@@ -24,7 +27,7 @@ public class Snowstorm extends AbstractTwinCard {
 
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
     private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.UNCOMMON;
-    private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ENEMY;
+    private static final AbstractCard.CardTarget TARGET = CardTarget.ALL_ENEMY;
 
     private static final int COST = 1;
 
@@ -41,7 +44,9 @@ public class Snowstorm extends AbstractTwinCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(m, p, new WeakPower(m, this.magicNumber, false)));
+        for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters.stream().filter(monster -> !monster.isDeadOrEscaped()).collect(Collectors.toList())) {
+            addToBot(new ApplyPowerAction(m, p, new WeakPower(mo, this.magicNumber, false)));
+        }
         addToBot(new PutSpecifiedCardToHandAction(this.magicNumber, card -> card.hasTag(CardTagsEnum.DOMAIN)));
         if (p.stance instanceof Freeze) {
             addToBot(new ApplyPowerAction(p, p, new TracePower(p, this.magicNumber)));

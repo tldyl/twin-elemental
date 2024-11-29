@@ -25,7 +25,7 @@ public class ThenWeReunion extends AbstractTwinCard {
 
     public ThenWeReunion() {
         super(ID, NAME, TwinElementalMod.getResourcePath(IMG_PATH), COST, DESCRIPTION, TYPE, RARITY, TARGET);
-        this.baseMagicNumber = this.magicNumber = 3;
+        this.baseMagicNumber = this.magicNumber = 4;
     }
 
     @Override

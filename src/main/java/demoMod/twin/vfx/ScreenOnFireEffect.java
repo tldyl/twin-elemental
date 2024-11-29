@@ -49,9 +49,9 @@ public class ScreenOnFireEffect extends AbstractGameEffect {
         AbstractGameEffect effect = new GiantFireEffect();
         Color fireColor = Color.WHITE.cpy();
         fireColor.a = 0.0F;
-        fireColor.r -= MathUtils.random(0.2F);
+        fireColor.r -= MathUtils.random(0.35F);
         fireColor.g = 0.1F;
-        fireColor.b -= fireColor.r - MathUtils.random(0.0F, 0.2F);
+        fireColor.b -= fireColor.r - MathUtils.random(0.5F, 0.65F) + 0.1F;
         ReflectionHacks.setPrivate(effect, AbstractGameEffect.class, "color", fireColor);
         return effect;
     }

@@ -37,7 +37,6 @@ public class Darkrooms extends AbstractTwinCard {
         this.baseTraceAmount = this.traceAmount = 5;
         this.cardsToPreview = new VoidCard();
         this.tags.add(CardTagsEnum.DOMAIN);
-        this.tags.add(CardTagsEnum.PREFER_BLAZE);
     }
 
     @Override

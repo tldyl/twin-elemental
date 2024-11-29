@@ -28,6 +28,7 @@ import demoMod.twin.cards.twin.Strike_T;
 import demoMod.twin.cards.twin.Switch;
 import demoMod.twin.enums.AbstractCardEnum;
 import demoMod.twin.enums.AbstractPlayerEnum;
+import demoMod.twin.patches.CharacterSelectScreenPatch;
 import demoMod.twin.relics.FetterOfElement;
 import demoMod.twin.stances.Blaze;
 import demoMod.twin.stances.Freeze;
@@ -46,9 +47,13 @@ public class ZetsuEnnNoTwins extends CustomPlayer {
         super(name, setClass, new EnergyOrbTwin(), new G3DJAnimation(null, null));
         this.initializeClass(TwinElementalMod.getResourcePath("char/character.png"), TwinElementalMod.getResourcePath("char/shoulder2.png"), TwinElementalMod.getResourcePath("char/shoulder.png"), TwinElementalMod.getResourcePath("char/corpse.png"), this.getLoadout(), 0.0F, -20F, 250.0F, 270.0F, new EnergyManager(3));
         this.stance = new Blaze();
-        this.loadAnimation(TwinElementalMod.getResourcePath("char/break_fire_and_ice.atlas"), TwinElementalMod.getResourcePath("char/break_fire_and_ice.json"), 3.0F);
-        this.state.setAnimation(0, "fire_idle", true);
-        this.state.setTimeScale(2.0F);
+        if (CharacterSelectScreenPatch.reskinIndex == 0) {
+            this.loadAnimation(TwinElementalMod.getResourcePath("char/break_fire_and_ice.atlas"), TwinElementalMod.getResourcePath("char/break_fire_and_ice.json"), 3.0F);
+            this.state.setAnimation(0, "fire_idle", true);
+            this.state.setTimeScale(2.0F);
+        } else {
+            this.img = new Texture(TwinElementalMod.getResourcePath("char/reskin_esaw.png"));
+        }
         if (ModHelper.enabledMods.size() > 0 && (ModHelper.isModEnabled("Diverse") || ModHelper.isModEnabled("Chimera") || ModHelper.isModEnabled("Blue Cards"))) {
             this.masterMaxOrbs = 1;
         }
@@ -114,7 +119,7 @@ public class ZetsuEnnNoTwins extends CustomPlayer {
 
     @Override
     public AbstractCard getStartCardForEvent() {
-        return new Strike_T();
+        return new Switch();
     }
 
     @Override

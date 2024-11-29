@@ -24,7 +24,7 @@ public class GeminiRotate extends AbstractTwinCard {
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
 
-    private static final int COST = 3;
+    private static final int COST = 2;
 
     public GeminiRotate() {
         super(ID, NAME, TwinElementalMod.getResourcePath(IMG_PATH), COST, DESCRIPTION, TYPE, RARITY, TARGET);
@@ -35,7 +35,7 @@ public class GeminiRotate extends AbstractTwinCard {
 
     @Override
     public Runnable getUpgradeAction() {
-        return () -> upgradeBaseCost(2);
+        return () -> upgradeDamage(2);
     }
 
     @Override

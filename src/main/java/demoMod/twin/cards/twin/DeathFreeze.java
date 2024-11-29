@@ -41,7 +41,7 @@ public class DeathFreeze extends AbstractTwinCard {
 
     public DeathFreeze() {
         super(ID, NAME, TwinElementalMod.getResourcePath(IMG_PATH), COST, DESCRIPTION, TYPE, RARITY, TARGET);
-        this.baseMagicNumber = this.magicNumber = 2;
+        this.baseMagicNumber = this.magicNumber = 3;
         this.baseTraceAmount = this.traceAmount = 3;
         this.tags.add(CardTagsEnum.DOMAIN);
         this.tags.add(CardTagsEnum.PREFER_FREEZE);
@@ -57,7 +57,10 @@ public class DeathFreeze extends AbstractTwinCard {
 
     @Override
     public Runnable getUpgradeAction() {
-        return () -> upgradeTraceAmount(1);
+        return () -> {
+            upgradeMagicNumber(1);
+            upgradeTraceAmount(1);
+        };
     }
 
     @Override
@@ -75,11 +78,11 @@ public class DeathFreeze extends AbstractTwinCard {
                 addToBot(new SFXAction("TWIN_FREEZE_" + MathUtils.random(1, 3)));
                 for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {
                     if (!mo.isDeadOrEscaped()) {
-                        addToBot(new VFXAction(p, new IceAttackEffect(mo, 0.9F), 0.0F));
+                        addToBot(new VFXAction(p, new IceAttackEffect(mo, 0.6F), 0.0F));
                     }
                 }
                 addToBot(new AbstractGameAction() {
-                    {duration = 0.7F;}
+                    {duration = 0.4F;}
 
                     @Override
                     public void update() {
@@ -92,7 +95,7 @@ public class DeathFreeze extends AbstractTwinCard {
                 addToBot(sfxAction);
                 for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {
                     if (!mo.isDeadOrEscaped()) {
-                        mo.tint.changeColor(Color.BLUE.cpy(), 0.7F);
+                        mo.tint.changeColor(Color.BLUE.cpy(), 0.4F);
                         addToBot(new AbstractGameAction() {
                             @Override
                             public void update() {

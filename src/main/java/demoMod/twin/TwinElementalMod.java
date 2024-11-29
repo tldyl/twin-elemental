@@ -32,6 +32,7 @@ import demoMod.twin.characters.ZetsuEnnNoTwins;
 import demoMod.twin.dynamicVariables.TraceAmount;
 import demoMod.twin.enums.AbstractCardEnum;
 import demoMod.twin.enums.AbstractPlayerEnum;
+import demoMod.twin.patches.CharacterSelectScreenPatch;
 import demoMod.twin.potions.AcceleratePotion;
 import demoMod.twin.potions.AgilePotion;
 import demoMod.twin.potions.HandWarmer;
@@ -299,6 +300,9 @@ public class TwinElementalMod implements EditCharactersSubscriber,
         }
         if (saveData.has("betaDefeatArt")) {
             betaDefeatArt = saveData.getBool("betaDefeatArt");
+        }
+        if (saveData.has("reskinIndex")) {
+            CharacterSelectScreenPatch.reskinIndex = saveData.getInt("reskinIndex");
         }
         ModPanel settingsPanel = new ModPanel();
         ModLabeledToggleButton betaDefeatArtOption = new ModLabeledToggleButton(uiStrings.TEXT[0], 350.0F, 700.0F, Color.WHITE, FontHelper.buttonLabelFont, betaDefeatArt, settingsPanel, (me) -> {},

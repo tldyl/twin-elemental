@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import demoMod.twin.TwinElementalMod;
+import demoMod.twin.enums.CardTagsEnum;
 import demoMod.twin.helpers.DomainGenerator;
 import demoMod.twin.powers.FiracierPower;
 
@@ -33,6 +34,7 @@ public class Firacier extends AbstractTwinCard {
     public Firacier() {
         super(ID, NAME, TwinElementalMod.getResourcePath(IMG_PATH), COST, DESCRIPTION, TYPE, RARITY, TARGET);
         this.baseDamage = 12;
+        this.tags.add(CardTagsEnum.DOMAIN);
         this.baseTraceAmount = this.traceAmount = 5;
         this.baseMagicNumber = this.magicNumber = 3;
     }
