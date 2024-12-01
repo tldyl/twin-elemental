@@ -53,7 +53,7 @@ public class HotDomain extends AbstractTwinCard {
     @Override
     public Supplier<AbstractPower> getDomainEffect() {
         AbstractPlayer p = AbstractDungeon.player;
-        return () -> DomainGenerator.getDomain(this, p, () -> addToBot(new DamageAllEnemiesAction(p, this.magicNumber, DamageInfo.DamageType.HP_LOSS, AbstractGameAction.AttackEffect.FIRE)), cardStrings.EXTENDED_DESCRIPTION[0], this.magicNumber);
+        return () -> DomainGenerator.getDomain(this, p, () -> addToBot(new DamageAllEnemiesAction(p, DamageInfo.createDamageMatrix(this.magicNumber, true), DamageInfo.DamageType.HP_LOSS, AbstractGameAction.AttackEffect.FIRE)), cardStrings.EXTENDED_DESCRIPTION[0], this.magicNumber);
     }
 
     @Override
