@@ -45,28 +45,50 @@ public class VenusFormPower extends AbstractPower {
     @Override
     public float atDamageGive(float damage, DamageInfo.DamageType type, AbstractCard card) {
         if (card != null) {
-            if (AbstractDungeon.player.hand.group.indexOf(card) == getStrengthIndex() && type == DamageInfo.DamageType.NORMAL) {
-                return damage + (float) this.amount;
-            }
+            int index = AbstractDungeon.player.hand.group.indexOf(card);
+            return damage + getBuffAmount(index, true);
         }
-        return super.atDamageGive(damage, type, card);
+        return super.atDamageGive(damage, type, null);
     }
 
     @Override
     public float modifyBlock(float blockAmount, AbstractCard card) {
         if (card != null) {
-            if (AbstractDungeon.player.hand.group.indexOf(card) == getDexterityIndex()) {
-                return blockAmount + (float) this.amount;
-            }
+            int index = AbstractDungeon.player.hand.group.indexOf(card);
+            return blockAmount + getBuffAmount(index, false);
         }
         return this.modifyBlock(blockAmount);
     }
 
-    private int getStrengthIndex() {
-        return switched ? AbstractDungeon.player.hand.size() - 1 : 0;
+    public int getBuffAmount(int cardIndex, boolean isStrength) {
+        if (isStrength) {
+            int lowerBound = switched ? AbstractDungeon.player.hand.size() / 2 : 0;
+            int upperBound = switched ? AbstractDungeon.player.hand.size() - 1 : AbstractDungeon.player.hand.size() / 2;
+            if (cardIndex >= lowerBound && cardIndex <= upperBound) {
+                return this.amount - (switched ? upperBound - cardIndex : cardIndex);
+            }
+        } else {
+            int lowerBound = switched ? 0 : AbstractDungeon.player.hand.size() / 2;
+            int upperBound = switched ? AbstractDungeon.player.hand.size() / 2 : AbstractDungeon.player.hand.size() - 1;
+            if (cardIndex >= lowerBound && cardIndex <= upperBound) {
+                return this.amount - (switched ? cardIndex : upperBound - cardIndex);
+            }
+        }
+        return 0;
     }
 
-    private int getDexterityIndex() {
-        return switched ? 0 : AbstractDungeon.player.hand.size() - 1;
+    public int getBuffAmount(int cardIndex) {
+        int lowerBound = switched ? AbstractDungeon.player.hand.size() / 2 : 0;
+        int upperBound = switched ? AbstractDungeon.player.hand.size() - 1 : AbstractDungeon.player.hand.size() / 2;
+        if (cardIndex >= lowerBound && cardIndex <= upperBound) {
+            return this.amount - (switched ? upperBound - cardIndex : cardIndex);
+        } else {
+            lowerBound = switched ? 0 : AbstractDungeon.player.hand.size() / 2;
+            upperBound = switched ? AbstractDungeon.player.hand.size() / 2 : AbstractDungeon.player.hand.size() - 1;
+            if (cardIndex >= lowerBound && cardIndex <= upperBound) {
+                return this.amount - (switched ? cardIndex : upperBound - cardIndex);
+            }
+        }
+        return 0;
     }
 }

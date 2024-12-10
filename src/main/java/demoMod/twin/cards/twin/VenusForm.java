@@ -25,13 +25,13 @@ public class VenusForm extends AbstractTwinCard {
 
     public VenusForm() {
         super(ID, NAME, TwinElementalMod.getResourcePath(IMG_PATH), COST, DESCRIPTION, TYPE, RARITY, TARGET);
-        this.baseMagicNumber = this.magicNumber = 7;
+        this.baseMagicNumber = this.magicNumber = 5;
         this.tags.add(BaseModCardTags.FORM);
     }
 
     @Override
     public Runnable getUpgradeAction() {
-        return () -> upgradeMagicNumber(3);
+        return () -> upgradeMagicNumber(2);
     }
 
     @Override

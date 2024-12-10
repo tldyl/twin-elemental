@@ -2,7 +2,9 @@ package demoMod.twin.patches;
 
 import basemod.BaseMod;
 import basemod.patches.com.megacrit.cardcrawl.cards.AbstractCard.MultiCardPreview;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
+import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
 import com.megacrit.cardcrawl.actions.utility.NewQueueCardAction;
 import com.megacrit.cardcrawl.actions.utility.UnlimboAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -10,8 +12,10 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
+import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import demoMod.twin.cards.twin.Monopoly;
+import demoMod.twin.powers.VenusFormPower;
 import demoMod.twin.ui.DomainCardsPanel;
 
 import java.util.List;
@@ -74,6 +78,56 @@ public class AbstractPlayerPatch {
         public static void Postfix(AbstractPlayer p) {
             DomainCardsPanel.inst.clearDomainCards();
             BaseMod.unsubscribe(DomainCardsPanel.inst);
+        }
+    }
+
+    @SpirePatch(
+            clz = AbstractPlayer.class,
+            method = "renderHand"
+    )
+    public static class PatchRenderHand {
+        public static SpireReturn<Void> Prefix(AbstractPlayer p, SpriteBatch sb) {
+            if (!p.hasPower(VenusFormPower.POWER_ID)) {
+                return SpireReturn.Continue();
+            }
+            VenusFormPower venusFormPower = (VenusFormPower) p.getPower(VenusFormPower.POWER_ID);
+            p.hand.group.forEach(card -> {
+                float width = AbstractCard.IMG_WIDTH * card.drawScale / 2.0F;
+                float height = AbstractCard.IMG_HEIGHT * card.drawScale / 2.0F;
+                float topOfCard = card.current_y + height;
+                float textSpacing = 50.0F * Settings.scale;
+                float textY = topOfCard + textSpacing;
+                float sin = (float)Math.sin((double)(card.angle / 180.0F) * Math.PI);
+                float xOffset = sin * width + AbstractCard.IMG_WIDTH * card.drawScale / 2.0F;
+                int index = p.hand.group.indexOf(card);
+                boolean shouldRender = index - p.hand.size() / 2 <= 0 && !venusFormPower.switched;
+                if (!shouldRender) {
+                    xOffset = sin * width - AbstractCard.IMG_WIDTH * card.drawScale / 2.0F;
+                }
+                shouldRender |= index - p.hand.size() / 2 >= 0 && venusFormPower.switched;
+                if (shouldRender) {
+                    FontHelper.renderFontCentered(sb, FontHelper.buttonLabelFont, "+" + venusFormPower.getBuffAmount(index), card.current_x - xOffset, textY, Settings.RED_TEXT_COLOR);
+                }
+            });
+            p.hand.group.forEach(card -> {
+                float width = AbstractCard.IMG_WIDTH * card.drawScale / 2.0F;
+                float height = AbstractCard.IMG_HEIGHT * card.drawScale / 2.0F;
+                float topOfCard = card.current_y + height;
+                float textSpacing = 50.0F * Settings.scale;
+                float textY = topOfCard + textSpacing;
+                float sin = (float)Math.sin((double)(card.angle / 180.0F) * Math.PI);
+                float xOffset = sin * width - AbstractCard.IMG_WIDTH * card.drawScale / 2.0F;
+                int index = p.hand.group.indexOf(card);
+                boolean shouldRender = index - p.hand.size() / 2 >= 0 && !venusFormPower.switched;
+                if (!shouldRender) {
+                    xOffset = sin * width + AbstractCard.IMG_WIDTH * card.drawScale / 2.0F;
+                }
+                shouldRender |= index - p.hand.size() / 2 <= 0 && venusFormPower.switched;
+                if (shouldRender) {
+                    FontHelper.renderFontCentered(sb, FontHelper.buttonLabelFont, "+" + venusFormPower.getBuffAmount(index), card.current_x - xOffset, textY, Settings.GREEN_TEXT_COLOR);
+                }
+            });
+            return SpireReturn.Continue();
         }
     }
 }

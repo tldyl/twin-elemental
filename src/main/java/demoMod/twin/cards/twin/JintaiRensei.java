@@ -43,9 +43,15 @@ public class JintaiRensei extends AbstractTwinCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new VFXAction(new OfferingEffect(), 1.0F));
         addToBot(new LoseHPAction(p, p, p.currentHealth / 2));
-        if (p.currentHealth / 2 > 0) {
-            addToBot(new ApplyPowerAction(p, p, new RepairPower(p, p.lastDamageTaken)));
-        }
+        addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                if (p.currentHealth / 2 > 0) {
+                    addToTop(new ApplyPowerAction(p, p, new RepairPower(p, p.lastDamageTaken)));
+                }
+                isDone = true;
+            }
+        });
         addToBot(new AbstractGameAction() {
             @Override
             public void update() {
