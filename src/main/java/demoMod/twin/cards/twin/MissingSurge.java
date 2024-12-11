@@ -1,5 +1,7 @@
 package demoMod.twin.cards.twin;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -15,6 +17,7 @@ public class MissingSurge extends AbstractTwinCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String IMG_PATH = "cards/MissingSurge";
+    private static final TextureAtlas.AtlasRegion UPGRADE_IMG = new TextureAtlas.AtlasRegion(new Texture(TwinElementalMod.getResourcePath("cards/MissingSurge+_power.png")), 0, 0, 250, 190);
 
     private static final CardType TYPE = CardType.POWER;
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
@@ -41,6 +44,8 @@ public class MissingSurge extends AbstractTwinCard {
             this.rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             this.initializeDescription();
             this.isInnate = true;
+            this.portrait = UPGRADE_IMG;
+            this.textureImg = TwinElementalMod.getResourcePath("cards/MissingSurge+_power.png");
         };
     }
 

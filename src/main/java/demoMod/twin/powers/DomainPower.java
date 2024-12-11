@@ -50,6 +50,13 @@ public class DomainPower extends TwoAmountPower {
 
     @Override
     public void atStartOfTurn() {
+        if (owner.hasPower(ThenWeReunionPower.POWER_ID)) {
+            return;
+        }
+        triggerEffect();
+    }
+
+    public void triggerEffect() {
         this.flash();
         effect.run();
         addToBot(new ReducePowerAction(owner, owner, this, 1));

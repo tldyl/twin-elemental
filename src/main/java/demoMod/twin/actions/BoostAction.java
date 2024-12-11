@@ -16,7 +16,7 @@ public class BoostAction extends AbstractGameAction {
         List<DomainPower> domainPowers = new ArrayList<>();
         for (AbstractPower power : AbstractDungeon.player.powers) {
             if (power instanceof DomainPower) {
-                power.atStartOfTurn();
+                ((DomainPower) power).triggerEffect();
                 domainPowers.add((DomainPower) power);
             }
         }

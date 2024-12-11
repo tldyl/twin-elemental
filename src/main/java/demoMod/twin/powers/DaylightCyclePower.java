@@ -1,5 +1,7 @@
 package demoMod.twin.powers;
 
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.mod.stslib.powers.abstracts.TwoAmountPower;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -9,6 +11,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import demoMod.twin.TwinElementalMod;
 import demoMod.twin.helpers.PowerRegionLoader;
+import demoMod.twin.ui.DaylightCyclePanel;
 
 public class DaylightCyclePower extends TwoAmountPower {
     public static final String POWER_ID = TwinElementalMod.makeID("DaylightCyclePower");
@@ -16,7 +19,7 @@ public class DaylightCyclePower extends TwoAmountPower {
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESC = powerStrings.DESCRIPTIONS;
 
-    private boolean isDay = true;
+    public static boolean isDay = true;
 
     public DaylightCyclePower(AbstractCreature owner, int amount) {
         this.name = DESC[2];
@@ -26,6 +29,24 @@ public class DaylightCyclePower extends TwoAmountPower {
         this.amount2 = 12;
         this.updateDescription();
         PowerRegionLoader.load(this);
+    }
+
+    @Override
+    public void onInitialApplication() {
+        DaylightCyclePanel.targetAngle = 0.0F;
+        isDay = true;
+    }
+
+    @Override
+    public void update(int slot) {
+        super.update(slot);
+        DaylightCyclePanel.update();
+    }
+
+    @Override
+    public void renderIcons(SpriteBatch sb, float x, float y, Color c) {
+        super.renderIcons(sb, x, y, c);
+        DaylightCyclePanel.render(sb);
     }
 
     public void playApplyPowerSfx() {
@@ -48,6 +69,7 @@ public class DaylightCyclePower extends TwoAmountPower {
             this.name = DESC[isDay ? 2 : 3];
         }
         this.updateDescription();
+        DaylightCyclePanel.onAfterUseCard(card, action);
     }
 
     @Override

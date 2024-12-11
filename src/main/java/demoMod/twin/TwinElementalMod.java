@@ -38,6 +38,7 @@ import demoMod.twin.potions.AgilePotion;
 import demoMod.twin.potions.HandWarmer;
 import demoMod.twin.potions.Refrigerant;
 import demoMod.twin.relics.*;
+import demoMod.twin.ui.DaylightCyclePanel;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -318,6 +319,7 @@ public class TwinElementalMod implements EditCharactersSubscriber,
         );
         settingsPanel.addUIElement(betaDefeatArtOption);
         BaseMod.registerModBadge(ImageMaster.loadImage(getResourcePath("ui/badge.png")), "TwinElemental", "Everyone", "TODO", settingsPanel);
+        DaylightCyclePanel.init();
     }
 
     @Override
