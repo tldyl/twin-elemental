@@ -42,8 +42,8 @@ public class CharacterSelectScreenPatch {
             reskinRight = new Hitbox(80.0f * Settings.scale, 80.0f * Settings.scale);
             reskinLeft = new Hitbox(80.0f * Settings.scale, 80.0f * Settings.scale);
 
-            reskinRight.move(Settings.WIDTH / 2.0F + reskin_W / 2.0F - reskinX_center + allTextInfoX, 800.0F * Settings.scale);
-            reskinLeft.move(Settings.WIDTH / 2.0F - reskin_W / 2.0F - reskinX_center + allTextInfoX, 800.0F * Settings.scale);
+            reskinRight.move(Settings.WIDTH / 2.0F + reskin_W / 2.0F - reskinX_center + allTextInfoX, 840.0F * Settings.scale);
+            reskinLeft.move(Settings.WIDTH / 2.0F - reskin_W / 2.0F - reskinX_center + allTextInfoX, 840.0F * Settings.scale);
         }
     }
 
@@ -65,20 +65,20 @@ public class CharacterSelectScreenPatch {
                     } else {
                         sb.setColor(Color.LIGHT_GRAY.cpy());
                     }
-                    sb.draw(ImageMaster.CF_RIGHT_ARROW, Settings.WIDTH / 2.0F + reskin_W / 2.0F - reskinX_center - 36.0f * Settings.scale + allTextInfoX, 800.0F * Settings.scale - 36.0f * Settings.scale, 0.0f, 0.0f, 48.0f, 48.0f, Settings.scale * 1.5f, Settings.scale * 1.5f, 0.0F, 0, 0, 48, 48, false, false);
+                    sb.draw(ImageMaster.CF_RIGHT_ARROW, Settings.WIDTH / 2.0F + reskin_W / 2.0F - reskinX_center - 36.0f * Settings.scale + allTextInfoX, 840.0F * Settings.scale - 36.0f * Settings.scale, 0.0f, 0.0f, 48.0f, 48.0f, Settings.scale * 1.5f, Settings.scale * 1.5f, 0.0F, 0, 0, 48, 48, false, false);
                     if (reskinLeft.hovered || Settings.isControllerMode) {
                         sb.setColor(Color.WHITE.cpy());
                     } else {
                         sb.setColor(Color.LIGHT_GRAY.cpy());
                     }
-                    sb.draw(ImageMaster.CF_LEFT_ARROW, Settings.WIDTH / 2.0F - reskin_W / 2.0F - reskinX_center - 36.0f * Settings.scale + allTextInfoX, 800.0F * Settings.scale - 36.0f * Settings.scale, 0.0f, 0.0f, 48.0f, 48.0f, Settings.scale * 1.5f, Settings.scale * 1.5f, 0.0F, 0, 0, 48, 48, false, false);
+                    sb.draw(ImageMaster.CF_LEFT_ARROW, Settings.WIDTH / 2.0F - reskin_W / 2.0F - reskinX_center - 36.0f * Settings.scale + allTextInfoX, 840.0F * Settings.scale - 36.0f * Settings.scale, 0.0f, 0.0f, 48.0f, 48.0f, Settings.scale * 1.5f, Settings.scale * 1.5f, 0.0F, 0, 0, 48, 48, false, false);
 
                     //   皮肤选择字体渲染
                     FontHelper.cardTitleFont.getData().setScale(1.0F);
                     FontHelper.losePowerFont.getData().setScale(0.8F);
 
-                    FontHelper.renderFontCentered(sb, FontHelper.losePowerFont, TEXT[0], Settings.WIDTH / 2.0F - reskinX_center + allTextInfoX, 850.0F * Settings.scale, Settings.GOLD_COLOR.cpy());
-                    FontHelper.renderFontCentered(sb, FontHelper.cardTitleFont, TEXT[1 + reskinIndex], Settings.WIDTH / 2.0F - reskinX_center + allTextInfoX, 800.0F * Settings.scale, Settings.GOLD_COLOR.cpy());
+                    FontHelper.renderFontCentered(sb, FontHelper.losePowerFont, TEXT[0], Settings.WIDTH / 2.0F - reskinX_center + allTextInfoX, 890.0F * Settings.scale, Settings.GOLD_COLOR.cpy());
+                    FontHelper.renderFontCentered(sb, FontHelper.cardTitleFont, TEXT[1 + reskinIndex], Settings.WIDTH / 2.0F - reskinX_center + allTextInfoX, 840.0F * Settings.scale, Settings.GOLD_COLOR.cpy());
                 }
             }
         }
@@ -106,8 +106,8 @@ public class CharacterSelectScreenPatch {
                     if (reskinLeft.justHovered || reskinRight.justHovered)
                         CardCrawlGame.sound.playV("UI_HOVER", 0.75f);
 
-                    reskinRight.move(Settings.WIDTH / 2.0F + reskin_W / 2.0F - reskinX_center + allTextInfoX, 800.0F * Settings.scale);
-                    reskinLeft.move(Settings.WIDTH / 2.0F - reskin_W / 2.0F - reskinX_center + allTextInfoX, 800.0F * Settings.scale);
+                    reskinRight.move(Settings.WIDTH / 2.0F + reskin_W / 2.0F - reskinX_center + allTextInfoX, 840.0F * Settings.scale);
+                    reskinLeft.move(Settings.WIDTH / 2.0F - reskin_W / 2.0F - reskinX_center + allTextInfoX, 840.0F * Settings.scale);
 
                     reskinLeft.update();
                     reskinRight.update();
