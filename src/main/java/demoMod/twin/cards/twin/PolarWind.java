@@ -1,5 +1,7 @@
 package demoMod.twin.cards.twin;
 
+import com.badlogic.gdx.graphics.Color;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -9,6 +11,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.WeakPower;
+import com.megacrit.cardcrawl.vfx.combat.WhirlwindEffect;
 import demoMod.twin.TwinElementalMod;
 import demoMod.twin.actions.XCostAction;
 import demoMod.twin.enums.CardTagsEnum;
@@ -69,6 +72,9 @@ public class PolarWind extends AbstractTwinCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new XCostAction(this, effect -> {
+            if (effect > 0) {
+                addToBot(new VFXAction(new WhirlwindEffect(new Color(0.149F, 0.58F, 0.8F, 1.0F), false)));
+            }
             for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters.stream().filter(monster -> !monster.isDeadOrEscaped()).collect(Collectors.toList())) {
                 addToBot(new ApplyPowerAction(mo, p, new WeakPower(mo, effect, false)));
             }

@@ -1,6 +1,8 @@
 package demoMod.twin.cards.twin;
 
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -10,6 +12,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import demoMod.twin.TwinElementalMod;
 import demoMod.twin.actions.PlayCardInCardGroupAction;
 import demoMod.twin.enums.CardTagsEnum;
+import demoMod.twin.vfx.CosmosDomainEffect;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -40,6 +43,7 @@ public class CosmosDomain extends AbstractTwinCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new VFXAction(new CosmosDomainEffect(p.hb.cX, p.hb.cY, Color.WHITE.cpy())));
         addToBot(new AbstractGameAction() {
             @Override
             public void update() {

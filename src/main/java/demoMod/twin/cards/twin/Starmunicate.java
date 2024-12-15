@@ -2,7 +2,6 @@ package demoMod.twin.cards.twin;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -11,6 +10,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import demoMod.twin.TwinElementalMod;
 import demoMod.twin.actions.BoostAction;
+import demoMod.twin.enums.AttackEffectEnum;
 import demoMod.twin.enums.CardTagsEnum;
 import demoMod.twin.stances.Blaze;
 
@@ -46,9 +46,9 @@ public class Starmunicate extends AbstractTwinCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+        addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AttackEffectEnum.CROSS_STAR));
         if (Blaze.switchedTimesThisTurn > 0) {
-            addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+            addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AttackEffectEnum.CROSS_STAR));
             addToBot(new BoostAction());
         }
         resetCoporateState();

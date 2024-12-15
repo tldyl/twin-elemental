@@ -1,5 +1,7 @@
 package demoMod.twin.cards.twin;
 
+import basemod.ReflectionHacks;
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
@@ -8,6 +10,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.combat.ThrowDaggerEffect;
 import demoMod.twin.TwinElementalMod;
 import demoMod.twin.enums.CardTagsEnum;
@@ -49,7 +52,9 @@ public class Icicle extends AbstractTwinCard {
         }
         addToTop(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn)));
         if (m != null) {
-            addToTop(new VFXAction(new ThrowDaggerEffect(m.hb.cX, m.hb.cY)));
+            AbstractGameEffect vfx = new ThrowDaggerEffect(m.hb.cX, m.hb.cY);
+            ReflectionHacks.setPrivate(vfx, AbstractGameEffect.class, "color", Color.SKY.cpy());
+            addToTop(new VFXAction(vfx));
         }
     }
 }

@@ -2,7 +2,6 @@ package demoMod.twin.cards.twin;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
@@ -13,6 +12,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import demoMod.twin.TwinElementalMod;
 import demoMod.twin.cards.tempCards.Cooperate;
+import demoMod.twin.enums.AttackEffectEnum;
 import demoMod.twin.enums.CardTagsEnum;
 import demoMod.twin.stances.Freeze;
 
@@ -63,13 +63,7 @@ public class SeaOfLantern extends AbstractTwinCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractGameAction.AttackEffect attackEffect;
-        if (p.stance instanceof Freeze) {
-            attackEffect = AbstractGameAction.AttackEffect.SLASH_HEAVY;
-        } else {
-            attackEffect = AbstractGameAction.AttackEffect.FIRE;
-        }
-        addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), attackEffect));
+        addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AttackEffectEnum.SEA_OF_LANTERN));
         if (p.stance instanceof Freeze) {
             addToBot(new GainEnergyAction(upgraded ? 2 : 1));
         } else {

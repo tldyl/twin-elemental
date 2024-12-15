@@ -1,6 +1,5 @@
 package demoMod.twin.cards.twin;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -9,6 +8,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import demoMod.twin.TwinElementalMod;
+import demoMod.twin.enums.AttackEffectEnum;
 import demoMod.twin.enums.CardTagsEnum;
 import demoMod.twin.powers.RedMoonPower;
 
@@ -43,7 +43,7 @@ public class RedMoon extends AbstractTwinCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+        addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AttackEffectEnum.RED_MOON));
         if (costForTurn == 0) {
             addToBot(new ApplyPowerAction(m, p, new RedMoonPower(m, this.magicNumber)));
         }

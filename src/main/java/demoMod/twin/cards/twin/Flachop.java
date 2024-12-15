@@ -1,7 +1,6 @@
 package demoMod.twin.cards.twin;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
@@ -10,8 +9,8 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.vfx.combat.SearingBlowEffect;
 import demoMod.twin.TwinElementalMod;
+import demoMod.twin.enums.AttackEffectEnum;
 import demoMod.twin.enums.CardTagsEnum;
 import demoMod.twin.powers.RedMoonPower;
 import demoMod.twin.stances.Blaze;
@@ -47,10 +46,11 @@ public class Flachop extends AbstractTwinCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        AbstractGameAction.AttackEffect attackEffect = AbstractGameAction.AttackEffect.SLASH_HEAVY;
         if (m != null && p.stance instanceof Blaze) {
-            addToBot(new VFXAction(new SearingBlowEffect(m.hb.cX, m.hb.cY, this.timesUpgraded), 0.2F));
+            attackEffect = AttackEffectEnum.FLACHOP;
         }
-        addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HEAVY));
+        addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), attackEffect));
         addToBot(new ApplyPowerAction(m, p, new RedMoonPower(m, this.magicNumber)));
         if (p.stance instanceof Blaze) {
             addToBot(new DrawCardAction(this.magicNumber));

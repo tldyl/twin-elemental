@@ -1,6 +1,5 @@
 package demoMod.twin.cards.twin;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -9,6 +8,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import demoMod.twin.TwinElementalMod;
+import demoMod.twin.enums.AttackEffectEnum;
 import demoMod.twin.enums.CardTagsEnum;
 import demoMod.twin.powers.TracePower;
 
@@ -41,7 +41,7 @@ public class GeminiRotate extends AbstractTwinCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         for (int i=0;i<this.magicNumber;i++) {
-            addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HEAVY));
+            addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AttackEffectEnum.CROSS_STAR));
         }
         if (costForTurn == 0) {
             addToBot(new ApplyPowerAction(p, p, new TracePower(p, 1)));

@@ -1,6 +1,5 @@
 package demoMod.twin.cards.twin;
 
-import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -8,13 +7,13 @@ import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.vfx.combat.MiracleEffect;
 import demoMod.twin.TwinElementalMod;
 import demoMod.twin.powers.LoseTracePower;
 import demoMod.twin.powers.TracePower;
-import demoMod.twin.stances.Freeze;
+import demoMod.twin.vfx.ActivateEffect;
 
 public class Activate extends AbstractTwinCard {
     public static final String ID = TwinElementalMod.makeID("Activate");
@@ -49,6 +48,6 @@ public class Activate extends AbstractTwinCard {
         addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
         addToBot(new ApplyPowerAction(p, p, new TracePower(p, this.magicNumber)));
         addToBot(new ApplyPowerAction(p, p, new LoseTracePower(p, this.magicNumber)));
-        addToBot(new VFXAction(new MiracleEffect(Color.CYAN, p.stance instanceof Freeze ? Color.BLUE : Color.RED, "ATTACK_MAGIC_SLOW_1"), 0.0F));
+        addToBot(new VFXAction(new ActivateEffect(p.hb.cX, p.hb.cY - 100.0F * Settings.scale), 0.0F));
     }
 }

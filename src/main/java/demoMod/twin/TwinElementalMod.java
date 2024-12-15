@@ -124,6 +124,7 @@ public class TwinElementalMod implements EditCharactersSubscriber,
         BaseMod.addAudio("TWIN_FREEZE_SHATTER_2", getAudioPath("freeze_shatter2"));
         BaseMod.addAudio("TWIN_FREEZE_SHATTER_3", getAudioPath("freeze_shatter3"));
         BaseMod.addAudio("TWIN_ICE_SPLASH", getAudioPath("ice_blast_projectile_spell_01"));
+        BaseMod.addAudio("TWIN_OUTBREAK", getAudioPath("sfx_outbreak"));
     }
 
     @Override
