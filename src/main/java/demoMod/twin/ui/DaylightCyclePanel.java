@@ -18,8 +18,7 @@ public class DaylightCyclePanel {
     private static Texture day;
     private static Texture night;
     private static Texture ring;
-    private static Texture gear1;
-    private static Texture gear2;
+    private static final Gear[] gears = new Gear[10];
 
     private static float angle;
     public static float targetAngle;
@@ -31,8 +30,16 @@ public class DaylightCyclePanel {
         day = new Texture(TwinElementalMod.getResourcePath("vfx/daylightCycle/day.png"));
         night = new Texture(TwinElementalMod.getResourcePath("vfx/daylightCycle/night.png"));
         ring = new Texture(TwinElementalMod.getResourcePath("vfx/daylightCycle/ring.png"));
-        gear1 = new Texture(TwinElementalMod.getResourcePath("vfx/daylightCycle/gear1.png"));
-        gear2 = new Texture(TwinElementalMod.getResourcePath("vfx/daylightCycle/gear2.png"));
+        gears[0] = new Gear(10, 425, 209, 1);
+        gears[1] = new Gear(9, 99, 281, -1);
+        gears[2] = new Gear(8, 198, 376, 1.5f);
+        gears[3] = new Gear(7, 407, 305, -1.5f);
+        gears[4] = new Gear(6, 333, 174, 0.6f);
+        gears[5] = new Gear(5, 334, 413, -1.5f);
+        gears[6] = new Gear(4, 122, 395, 2);
+        gears[7] = new Gear(3, 100, 329, 1.5f);
+        gears[8] = new Gear(2, 93, 217, -1);
+        gears[9] = new Gear(1, 155, 102, 3);
         color = Color.WHITE.cpy();
     }
 
@@ -50,27 +57,9 @@ public class DaylightCyclePanel {
         }
         color.a = 1.0F;
         sb.setColor(color);
-        sb.draw(bg, Settings.WIDTH / 2.0F - bg.getWidth() / 2.0F, Settings.HEIGHT * 0.75F - bg.getHeight() / 2.0F,
-                bg.getWidth() / 2.0F, bg.getHeight() / 2.0F,
-                bg.getWidth(), bg.getHeight(),
-                Settings.scale, Settings.scale,
-                0, 0, 0,
-                bg.getWidth(), bg.getHeight(),
-                false, false);
-        sb.draw(gear2, Settings.WIDTH / 2.0F - bg.getWidth() / 2.0F, Settings.HEIGHT * 0.75F - bg.getHeight() / 2.0F,
-                bg.getWidth() / 2.0F, bg.getHeight() / 2.0F,
-                bg.getWidth(), bg.getHeight(),
-                Settings.scale, Settings.scale,
-                0, 0, 0,
-                bg.getWidth(), bg.getHeight(),
-                false, false);
-        sb.draw(gear1, Settings.WIDTH / 2.0F - bg.getWidth() / 2.0F, Settings.HEIGHT * 0.75F - bg.getHeight() / 2.0F,
-                bg.getWidth() / 2.0F, bg.getHeight() / 2.0F,
-                bg.getWidth(), bg.getHeight(),
-                Settings.scale, Settings.scale,
-                0, 0, 0,
-                bg.getWidth(), bg.getHeight(),
-                false, false);
+        for (Gear gear : gears) {
+            gear.render(sb);
+        }
         sb.draw(ring, Settings.WIDTH / 2.0F - bg.getWidth() / 2.0F, Settings.HEIGHT * 0.75F - bg.getHeight() / 2.0F,
                 bg.getWidth() / 2.0F, bg.getHeight() / 2.0F,
                 bg.getWidth(), bg.getHeight(),
@@ -101,6 +90,13 @@ public class DaylightCyclePanel {
         sb.setBlendFunction(770, 771);
         color.a = 1.0F;
         sb.setColor(color);
+        sb.draw(bg, Settings.WIDTH / 2.0F - bg.getWidth() / 2.0F, Settings.HEIGHT * 0.75F - bg.getHeight() / 2.0F,
+                bg.getWidth() / 2.0F, bg.getHeight() / 2.0F,
+                bg.getWidth(), bg.getHeight(),
+                Settings.scale, Settings.scale,
+                0, 0, 0,
+                bg.getWidth(), bg.getHeight(),
+                false, false);
         sb.draw(hand, Settings.WIDTH / 2.0F - bg.getWidth() / 2.0F, Settings.HEIGHT * 0.75F - bg.getHeight() / 2.0F,
                 bg.getWidth() / 2.0F, bg.getHeight() / 2.0F,
                 bg.getWidth(), bg.getHeight(),
@@ -108,5 +104,32 @@ public class DaylightCyclePanel {
                 angle, 0, 0,
                 bg.getWidth(), bg.getHeight(),
                 false, false);
+    }
+
+    static class Gear {
+        private final Texture img;
+        private final float centerX;
+        private final float centerY;
+        private final float speed;
+
+        public Gear(int imgIndex, float centerX, float centerY, float speed) {
+            this.img = new Texture(TwinElementalMod.getResourcePath(String.format("vfx/daylightCycle/gear%d.png", imgIndex)));
+            this.centerX = centerX;
+            this.centerY = img.getHeight() - centerY;
+            this.speed = speed;
+        }
+
+        public void render(SpriteBatch sb) {
+            sb.draw(img,
+                    Settings.WIDTH / 2.0F - (img.getWidth() / 2f - centerX) * Settings.scale - centerX,
+                    Settings.HEIGHT * 0.75F - (img.getHeight() / 2f - centerY) * Settings.scale - centerY,
+                    centerX, centerY,
+                    img.getWidth(), img.getHeight(),
+                    Settings.scale, Settings.scale,
+                    angle * speed,
+                    0, 0,
+                    img.getWidth(), img.getHeight(),
+                    false, false);
+        }
     }
 }
