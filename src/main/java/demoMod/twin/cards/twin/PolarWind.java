@@ -78,10 +78,8 @@ public class PolarWind extends AbstractTwinCard {
             for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters.stream().filter(monster -> !monster.isDeadOrEscaped()).collect(Collectors.toList())) {
                 addToBot(new ApplyPowerAction(mo, p, new WeakPower(mo, effect, false)));
             }
-            if (upgraded) {
-                this.traceAmount = effect;
-                addToBot(new ApplyPowerAction(p, p, getDomainEffect().get()));
-            }
+            this.traceAmount = effect;
+            addToBot(new ApplyPowerAction(p, p, getDomainEffect().get()));
         }, this.energyOnUse + (upgraded ? 1 : 0)));
     }
 }

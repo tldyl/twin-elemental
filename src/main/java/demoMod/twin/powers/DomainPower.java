@@ -1,5 +1,6 @@
 package demoMod.twin.powers;
 
+import basemod.interfaces.CloneablePowerInterface;
 import com.evacipated.cardcrawl.mod.stslib.powers.abstracts.TwoAmountPower;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -13,8 +14,9 @@ import demoMod.twin.interfaces.OnDomainTriggerSubscriber;
 import demoMod.twin.ui.DomainCardsPanel;
 
 import java.util.Collections;
+import java.util.UUID;
 
-public class DomainPower extends TwoAmountPower {
+public class DomainPower extends TwoAmountPower implements CloneablePowerInterface {
     private final String rawDescription;
     private final Runnable effect;
     private final AbstractTwinCard domainCard;
@@ -91,5 +93,10 @@ public class DomainPower extends TwoAmountPower {
             }
         }
         DomainCardsPanel.inst.removeDomainCard(ID);
+    }
+
+    @Override
+    public AbstractPower makeCopy() {
+        return new DomainPower(domainCard, owner, amount, domainCard.cardID + "-" + UUID.randomUUID(), name, effect, description, amount2);
     }
 }

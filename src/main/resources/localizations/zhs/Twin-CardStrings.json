@@ -369,7 +369,7 @@
   },
   "Twin:CosmosDomain": {
     "NAME": "天地大阵",
-    "DESCRIPTION": "打出并 消耗 所有 twin:结界 牌。 NL 消耗 。"
+    "DESCRIPTION": "复制所有生效中的 twin:结界 。 NL 消耗 。"
   },
   "Twin:SpinningRadiance": {
     "NAME": "熘煋飞转",
