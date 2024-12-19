@@ -1,6 +1,9 @@
 package demoMod.twin.cards.twin;
 
+import basemod.ReflectionHacks;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
@@ -11,6 +14,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
@@ -23,6 +27,8 @@ import demoMod.twin.TwinElementalMod;
 import demoMod.twin.enums.CardTagsEnum;
 import demoMod.twin.stances.Freeze;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class FrozenSpear extends AbstractTwinCard {
     public static final String ID = TwinElementalMod.makeID("FrozenSpear");
 
@@ -30,6 +36,7 @@ public class FrozenSpear extends AbstractTwinCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String IMG_PATH = "cards/FrozenSpear";
+    private static final TextureAtlas.AtlasRegion spearRegion = new TextureAtlas.AtlasRegion(new Texture(TwinElementalMod.getResourcePath("vfx/frozenSpear.png")), 0, 0, 74, 312);
 
     private static final CardType TYPE = CardType.ATTACK;
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
@@ -94,7 +101,8 @@ public class FrozenSpear extends AbstractTwinCard {
             CardCrawlGame.sound.playA("ATTACK_HEAVY", -0.5F);
             AbstractDungeon.effectsQueue.add(new RoomTintEffect(Color.SKY.cpy(), 0.4F));
             AbstractDungeon.effectsQueue.add(new BorderLongFlashEffect(new Color(0.2F, 0.35F, 1.0F, 0.5F)));
-
+            ReflectionHacks.setPrivateStatic(CollectorStakeEffect.class, "img", spearRegion);
+            AtomicInteger count = new AtomicInteger(0);
             for (int i=0;i<this.magicNumber;i++) {
                 addToBot(new AbstractGameAction() {
                     @Override
@@ -107,12 +115,18 @@ public class FrozenSpear extends AbstractTwinCard {
                             public void update() {
                                 if (start) {
                                     start = false;
+                                    ReflectionHacks.setPrivate(effect, AbstractGameEffect.class, "color", new Color(MathUtils.random(0.0F, 0.1F), MathUtils.random(0.2F, 0.6F), MathUtils.random(0.7F, 1.0F), 0.0F));
+                                    ReflectionHacks.setPrivate(effect, CollectorStakeEffect.class, "targetScale", 1.1F);
                                     AbstractDungeon.effectList.add(effect);
                                 }
                                 isDone = effect.isDone;
                                 if (isDone) {
+                                    count.incrementAndGet();
                                     calculateCardDamage(m);
                                     addToTop(new DamageAction(m, new DamageInfo(p, FrozenSpear.this.damage, FrozenSpear.this.damageTypeForTurn), AbstractGameAction.AttackEffect.NONE));
+                                    if (count.get() >= magicNumber) {
+                                        ReflectionHacks.setPrivateStatic(CollectorStakeEffect.class, "img", ImageMaster.vfxAtlas.findRegion("combat/stake"));
+                                    }
                                 }
                             }
                         });

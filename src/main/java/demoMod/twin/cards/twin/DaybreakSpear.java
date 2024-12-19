@@ -8,7 +8,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.vfx.combat.ScreenOnFireEffect;
 import demoMod.twin.TwinElementalMod;
 import demoMod.twin.enums.CardTagsEnum;
 import demoMod.twin.stances.Blaze;
@@ -52,7 +51,6 @@ public class DaybreakSpear extends AbstractTwinCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (p.stance instanceof Blaze) {
-            addToBot(new VFXAction(new ScreenOnFireEffect(), 1.0F));
             if (m != null) {
                 addToBot(new VFXAction(new DaybreakSpearEffect(m), 0.1F));
             }

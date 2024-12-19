@@ -1,6 +1,7 @@
 package demoMod.twin.cards.twin;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -11,6 +12,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import demoMod.twin.TwinElementalMod;
 import demoMod.twin.actions.PlayCardInCardGroupAction;
 import demoMod.twin.enums.CardTagsEnum;
+import demoMod.twin.vfx.SpinningRadianceEffect;
 
 public class SpinningRadiance extends AbstractTwinCard {
     public static final String ID = TwinElementalMod.makeID("SpinningRadiance");
@@ -50,6 +52,7 @@ public class SpinningRadiance extends AbstractTwinCard {
                     isDone = true;
                 }
             }));
+            addToTop(new VFXAction(null, new SpinningRadianceEffect(), 0.0F, true));
         }
     }
 }

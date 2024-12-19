@@ -25,6 +25,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.*;
+import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import demoMod.twin.blights.FirstPosition;
 import demoMod.twin.cards.tempCards.Cooperate;
 import demoMod.twin.cards.twin.*;
@@ -73,6 +74,7 @@ public class TwinElementalMod implements EditCharactersSubscriber,
     public static Color mainTwinColor = new Color(0.75686F, 0.9294F, 1.0F, 1.0F);
     private static final List<AbstractGameAction> actionList = new ArrayList<>();
     private static final List<AbstractGameAction> parallelActions = new ArrayList<>();
+    private static final List<AbstractGameEffect> vfxList = new ArrayList<>();
     public static final List<Consumer<SpriteBatch>> renderable = new ArrayList<>();
     private FrameBuffer fbo;
     public static SpireConfig saveData;
@@ -329,6 +331,7 @@ public class TwinElementalMod implements EditCharactersSubscriber,
             item.accept(sb);
         }
         renderable.clear();
+        vfxList.forEach(e -> e.render(sb));
     }
 
     public static void addToBot(AbstractGameAction action) {
@@ -337,6 +340,10 @@ public class TwinElementalMod implements EditCharactersSubscriber,
 
     public static void addParallel(AbstractGameAction action) {
         parallelActions.add(action);
+    }
+
+    public static void addVfx(AbstractGameEffect effect) {
+        vfxList.add(effect);
     }
 
     @Override
@@ -353,6 +360,8 @@ public class TwinElementalMod implements EditCharactersSubscriber,
             }
             parallelActions.removeIf(action -> action.isDone);
         }
+        vfxList.forEach(AbstractGameEffect::update);
+        vfxList.removeIf(e -> e.isDone);
     }
 
     @Override
