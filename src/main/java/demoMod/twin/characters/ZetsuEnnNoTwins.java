@@ -20,6 +20,7 @@ import com.megacrit.cardcrawl.helpers.ModHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
+import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import demoMod.twin.TwinElementalMod;
 import demoMod.twin.blights.FirstPosition;
 import demoMod.twin.cards.twin.Defend_T;
@@ -33,6 +34,7 @@ import demoMod.twin.relics.FetterOfElement;
 import demoMod.twin.stances.Blaze;
 import demoMod.twin.stances.Freeze;
 import demoMod.twin.ui.EnergyOrbTwin;
+import demoMod.twin.vfx.VictoryEffect;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -215,6 +217,13 @@ public class ZetsuEnnNoTwins extends CustomPlayer {
         });
         panels.add(new CutscenePanel(TwinElementalMod.getResourcePath("scenes/twin4.png")));
         return panels;
+    }
+
+    @Override
+    public void updateVictoryVfx(ArrayList<AbstractGameEffect> effects) {
+        if (effects.isEmpty()) {
+            effects.add(new VictoryEffect());
+        }
     }
 
     static {
