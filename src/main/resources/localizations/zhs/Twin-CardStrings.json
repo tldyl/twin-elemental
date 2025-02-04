@@ -13,7 +13,7 @@
   },
   "Twin:Switch": {
     "NAME": "切换",
-    "DESCRIPTION": "获得 !B! 点 格挡 。 NL twin:切换 。"
+    "DESCRIPTION": "获得 !B! 点 格挡 。 NL 增加 !M! 张 *配合 到你的手牌。"
   },
   "Twin:Icicle": {
     "NAME": "冰锥",
@@ -21,7 +21,7 @@
   },
   "Twin:Flachop": {
     "NAME": "炎斩",
-    "DESCRIPTION": "造成 !D! 点伤害，目标在本回合从攻击受到的伤害增加 !M! 。 NL twin:炎 ：抽 !M! 张牌。"
+    "DESCRIPTION": "造成 !D! 点伤害。 NL twin:炎 ：抽 !M! 张牌。"
   },
   "Twin:Abycold": {
     "NAME": "异度深寒",
@@ -33,7 +33,7 @@
   },
   "Twin:Starmunicate": {
     "NAME": "双星交信",
-    "DESCRIPTION": "twin:连携 。 NL 造成 !D! 点伤害。 NL 若本回合内 twin:切换 过，额外造成一次 !D! 点伤害并 twin:加速 。"
+    "DESCRIPTION": "twin:连携 。 NL 造成 !D! 点伤害。 NL 如果在本牌耗能为0时打出，额外造成一次 !D! 点伤害。"
   },
   "Twin:HemIn": {
     "NAME": "夹击",
@@ -41,7 +41,7 @@
   },
   "Twin:Activate": {
     "NAME": "活化",
-    "DESCRIPTION": "造成 !D! 点伤害。 NL 本回合内获得 !M! 层 twin:同调 。"
+    "DESCRIPTION": "造成 !D! 点伤害。 NL 抽一张牌。 NL twin:加速 。"
   },
   "Twin:Skate": {
     "NAME": "溜冰",
@@ -49,15 +49,15 @@
   },
   "Twin:LightingSlash": {
     "NAME": "雷光切",
-    "DESCRIPTION": "造成 !D! 点伤害。 NL 如果目标具有 易伤 状态，伤害翻倍。 NL twin:炎 ：抽 !M! 张牌。"
+    "DESCRIPTION": "造成 !D! 点伤害。 NL twin:炎 ：如果目标具有 易伤 状态，伤害翻倍。"
   },
   "Twin:RedMoon": {
     "NAME": "红月",
-    "DESCRIPTION": "twin:连携 。 NL 造成 !D! 点伤害。 NL 如果在耗能为0时打出，目标在本回合从攻击受到的伤害增加 !M! 。"
+    "DESCRIPTION": "造成 !D! 点伤害。 NL 目标在本回合从攻击受到的伤害增加 !M! 。"
   },
   "Twin:FrozenWind": {
     "NAME": "霜风",
-    "DESCRIPTION": "twin:连携 。 NL 造成 !D! 点伤害。 NL 如果在耗能为0时打出，目标失去 !M! 点 力量 一回合。"
+    "DESCRIPTION": "给予 !M! 层 虚弱 。 NL 所有敌人失去两倍于场上 虚弱 总层数的生命值。"
   },
   "Twin:HotDomain": {
     "NAME": "高温结界",
@@ -75,7 +75,7 @@
   },
   "Twin:WindDomain": {
     "NAME": "御风结界",
-    "DESCRIPTION": "twin:结界 !twin:TA! ：抽 !M! 张牌。 NL twin:加速 。",
+    "DESCRIPTION": "抽 !M! 张牌。 NL twin:结界 !twin:TA! ：抽 !M! 张牌。",
     "EXTENDED_DESCRIPTION": [
       "回合开始时，抽 #b%d 张牌。"
     ]
@@ -100,7 +100,7 @@
   },
   "Twin:SeeYouOtherside": {
     "NAME": "思念的彼方",
-    "DESCRIPTION": "twin:连携 。 NL 获得 !B! 点 格挡 。 NL 如果在耗能为0时打出，在本场战斗中其 格挡 增加 !M! 。"
+    "DESCRIPTION": "获得 !B! 点 格挡 。 NL 在手牌中时，每次 twin:切换 都会让这张牌的基础 格挡 在本场战斗增加 !M! 。"
   },
   "Twin:Snowstorm": {
     "NAME": "雪走",
@@ -108,18 +108,21 @@
   },
   "Twin:Firacier": {
     "NAME": "炎川",
-    "DESCRIPTION": "造成 !D! 点伤害。 NL twin:结界 !twin:TA! ： twin:切换 时，所有敌人失去 !M! 点生命。",
+    "DESCRIPTION": "对所有敌人造成 !D! 点伤害。 NL twin:结界 !twin:TA! ： twin:切换 时，所有敌人失去 !M! 点生命。",
     "EXTENDED_DESCRIPTION": [
       "每当你 #y切换 时，所有敌人失去 #b%d 点生命。"
     ]
   },
   "Twin:FrozenSpear": {
     "NAME": "急冻霜枪",
-    "DESCRIPTION": "twin:连携 。 NL 造成 !D! 点伤害 !M! 次。 NL twin:霜 ：额外造成等同于目标身上 虚弱 层数的伤害。"
+    "DESCRIPTION": "twin:连携 。 NL 造成 !D! 点伤害 !M! 次。 NL twin:霜 ：所有敌人身上的 虚弱 总层数每有2层，就额外造成一次 !D! 点伤害。",
+    "EXTENDED_DESCRIPTION": [
+      "(额外再造成 %d 次伤害。)"
+    ]
   },
   "Twin:FireWheel": {
     "NAME": "炎轮",
-    "DESCRIPTION": "twin:连携 。 NL 对随机敌人造成 !D! 点伤害并给予一层 易伤 3次。 NL twin:炎 ：被攻击的目标在本回合从攻击受到的伤害增加 !M! 。"
+    "DESCRIPTION": "twin:连携 。 NL 对随机敌人造成 !D! 点伤害并给予一层 易伤 3次。 NL twin:炎 ： twin:红月 在下回合开始时不会被移除。"
   },
   "Twin:GeminiRotate": {
     "NAME": "双子星轮转",
@@ -143,7 +146,7 @@
   },
   "Twin:DeathFreeze": {
     "NAME": "绝死冰霜",
-    "DESCRIPTION": "需要 twin:霜 主导打出。 NL 给予所有敌人 !M! 层 虚弱 。 NL twin:结界 !twin:TA! ：获得等同于场上 虚弱 总层数的 格挡 ，所有敌人失去等量生命。",
+    "DESCRIPTION": "twin:霜 ：给予所有敌人 !M! 层 虚弱 。 NL twin:结界 !twin:TA! ：获得等同于场上 虚弱 总层数的 格挡 ，所有敌人失去等量生命。",
     "EXTENDED_DESCRIPTION": [
       "回合开始时，获得等同于场上 #y虚弱 总层数的 #y格挡 ，所有敌人失去等量生命。",
       "这张牌要由 #b霜 来打出！"
@@ -155,9 +158,9 @@
   },
   "Twin:BurningSky": {
     "NAME": "焚天",
-    "DESCRIPTION": "需要 twin:炎 主导打出。 NL 获得 !M! 层 活力 。 NL twin:结界 !twin:TA! ：获得 !M! 层 活力 。",
+    "DESCRIPTION": "需要 twin:炎 主导打出。 NL 获得 !M! 层 活力 。 NL twin:结界 !twin:TA! ：所有敌人在本回合受到的攻击伤害增加 !M! 。",
     "EXTENDED_DESCRIPTION": [
-      "回合开始时，获得 #b%d 层 #y活力 。",
+      "回合开始时，所有敌人在本回合受到的 #y攻击 伤害增加 #b%d 。",
       "这张牌要由 #r炎 来打出！"
     ]
   },
@@ -190,7 +193,8 @@
   },
   "Twin:Darkrooms": {
     "NAME": "黑暗狭间",
-    "DESCRIPTION": "将一张 *虚空 放入弃牌堆。 NL twin:结界 !twin:TA! ： 抽一张牌并获得 [E] 。",
+    "DESCRIPTION": "将一张 *虚空 放入弃牌堆。 NL 在下回合获得 [E] [E] [E] 并抽 !M! 张牌。 NL 消耗 。",
+    "UPGRADE_DESCRIPTION": "将一张 *虚空 放入弃牌堆。 NL 在下回合获得 [E] [E] [E] 并抽 !M! 张牌。",
     "EXTENDED_DESCRIPTION": [
       "回合开始时，抽一张牌并获得 [E] 。"
     ]
@@ -215,11 +219,12 @@
   },
   "Twin:SnowZone": {
     "NAME": "雪域",
-    "DESCRIPTION": "twin:连携 。 NL 获得 !B! 点 格挡 。 NL twin:霜 ：在本回合 twin:切换 时，给予所有敌人 !M! 层 虚弱 ； NL 所有敌人失去 !M! 点 力量 。"
+    "DESCRIPTION": "给予所有敌人 !M! 层 虚弱 。 NL 在手牌中时，每次 twin:切换 都会使这张牌的特殊值在下次打出前增加1。"
   },
   "Twin:HotWind": {
     "NAME": "热风",
-    "DESCRIPTION": "twin:连携 。 NL 对所有敌人造成 !D! 点伤害。 NL twin:炎 ：获得等同于本回合 twin:切换 次数 !M! 倍的 活力 。",
+    "DESCRIPTION": "获得 !M! 层 活力 。 NL 在手牌中时，每次 twin:切换 都会使这张牌的特殊值在下次打出前增加3。",
+    "UPGRADE_DESCRIPTION": "获得 !M! 层 活力 。 NL 在手牌中时，每次 twin:切换 都会使这张牌的特殊值在下次打出前增加4。",
     "EXTENDED_DESCRIPTION": [
       " NL (你本回合已 twin:切换 过 %d 次)"
     ]
@@ -233,8 +238,8 @@
   },
   "Twin:Niflheimr": {
     "NAME": "雾霜之国",
-    "DESCRIPTION": "每次 twin:切换 至 twin:霜 时，所有敌人失去 !M! 点 力量 一回合。",
-    "UPGRADE_DESCRIPTION": "每次 twin:切换 至 twin:霜 时，所有敌人失去 !M! 点 力量 一回合； NL 给予所有敌人 !M! 层 虚弱 。"
+    "DESCRIPTION": "敌人的回合开始时，其失去等同于其身上 虚弱 层数的生命。",
+    "UPGRADE_DESCRIPTION": "每次 twin:切换 至 twin:霜 时，给予所有敌人 !M! 层 虚弱。 NL 敌人的回合开始时，其失去等同于其身上 虚弱 层数的生命。"
   },
   "Twin:FrozenOcean": {
     "NAME": "千年冰海",
@@ -246,7 +251,7 @@
   },
   "Twin:WolfPath": {
     "NAME": "狼之道",
-    "DESCRIPTION": "twin:炎 ：抽牌直到手牌为满，丢弃所有非攻击牌。 NL twin:霜 ：获得等同于回合开始时获得能量数的 [E] ，丢弃所有非技能牌。"
+    "DESCRIPTION": "twin:炎 ：造成 !D! 点伤害，这张牌的 格挡 获得量在本场战斗增加 !M! 。 NL twin:霜 ：获得 !B! 点 格挡 ，这张牌的伤害在本场战斗增加 !M! 。 NL 打出后重置耗能并返回到手牌。"
   },
   "Twin:PolarWind": {
     "NAME": "极地霜风",
@@ -274,14 +279,14 @@
   },
   "Twin:Proud": {
     "NAME": "孤傲",
-    "DESCRIPTION": "抽 !M! 张牌。 NL 从手牌中选择一张牌将其打出两次。 NL 结束你的回合。",
+    "DESCRIPTION": "抽 !M! 张牌。 NL 从手牌中选择一张牌将其打出两次。 NL 你本回合内不能再抽牌。",
     "EXTENDED_DESCRIPTION": [
       "打出两次"
     ]
   },
   "Twin:KuuhakuDomain": {
     "NAME": "空白结界",
-    "DESCRIPTION": "固有 。 NL twin:结界 !twin:TA! ：打出弃牌堆中的一张随机 twin:结界 牌。 NL 消耗 。",
+    "DESCRIPTION": "twin:结界 !twin:TA! ：打出弃牌堆中的一张随机 twin:结界 牌。 NL 消耗 。",
     "EXTENDED_DESCRIPTION": [
       "你的回合开始时，打出弃牌堆中的一张随机 #y结界 牌。"
     ]
@@ -316,14 +321,14 @@
   },
   "Twin:KingIceBound": {
     "NAME": "冰封之王",
-    "DESCRIPTION": "twin:连携 。 NL 造成 !D! 点伤害。 NL 给予 !M! 层 虚弱 。 NL twin:霜 ：使抽牌堆中所有 twin:连携 牌下次打出前的耗能减少1。",
+    "DESCRIPTION": "造成 !D! 点伤害。 NL twin:霜 ：获得等同于目标身上负面效果种类数的 [E] 。",
     "EXTENDED_DESCRIPTION": [
       "悲叹冥河"
     ]
   },
   "Twin:FantasyHell": {
     "NAME": "幻灵地狱",
-    "DESCRIPTION": "对所有敌人造成 !D! 点伤害 !M! 次。 NL twin:结界 !twin:TA! ：获得 [E] 。",
+    "DESCRIPTION": "对所有敌人造成 !D! 点伤害 !M! 次。 NL twin:红月 在下 !twin:TA! 个回合开始时不会被移除。",
     "EXTENDED_DESCRIPTION": [
       "回合开始时，获得 [E] 。"
     ]
@@ -364,8 +369,7 @@
   },
   "Twin:Butterfly": {
     "NAME": "蝴蝶",
-    "DESCRIPTION": "抽 !M! 张牌。 NL 获得 [E] [E] [E] [E] 。 NL 每有一张其他手牌，抽牌数和 [E] 获得量降低1(最少为1)。 NL 消耗 。",
-    "UPGRADE_DESCRIPTION": "抽 !M! 张牌。 NL 获得 [E] [E] [E] [E] [E] 。 NL 每有一张其他手牌，抽牌数和 [E] 获得量降低1(最少为1)。 NL 消耗 。"
+    "DESCRIPTION": "抽牌直到你有 !M! 张手牌。 NL 每抽一张牌就获得 [E] 。 NL 消耗 。"
   },
   "Twin:CosmosDomain": {
     "NAME": "天地大阵",

@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import demoMod.twin.TwinElementalMod;
-import demoMod.twin.actions.BoostAction;
 import demoMod.twin.enums.CardTagsEnum;
 import demoMod.twin.helpers.DomainGenerator;
 
@@ -31,7 +30,7 @@ public class WindDomain extends AbstractTwinCard {
 
     public WindDomain() {
         super(ID, NAME, TwinElementalMod.getResourcePath(IMG_PATH), COST, DESCRIPTION, TYPE, RARITY, TARGET);
-        this.baseTraceAmount = this.traceAmount = 3;
+        this.baseTraceAmount = this.traceAmount = 2;
         this.baseMagicNumber = this.magicNumber = 1;
         this.tags.add(CardTagsEnum.DOMAIN);
     }
@@ -49,7 +48,7 @@ public class WindDomain extends AbstractTwinCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new DrawCardAction(this.magicNumber));
         addToBot(new ApplyPowerAction(p, p, getDomainEffect().get()));
-        addToBot(new BoostAction());
     }
 }

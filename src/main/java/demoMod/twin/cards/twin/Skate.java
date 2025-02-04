@@ -24,18 +24,18 @@ public class Skate extends AbstractTwinCard {
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
 
-    private static final int COST = 1;
+    private static final int COST = 0;
 
     public Skate() {
         super(ID, NAME, TwinElementalMod.getResourcePath(IMG_PATH), COST, DESCRIPTION, TYPE, RARITY, TARGET);
-        this.baseBlock = 6;
+        this.baseBlock = 3;
         this.baseMagicNumber = this.magicNumber = 1;
         this.tags.add(CardTagsEnum.PREFER_FREEZE);
     }
 
     @Override
     public Runnable getUpgradeAction() {
-        return () -> upgradeBlock(3);
+        return () -> upgradeBlock(2);
     }
 
     @Override

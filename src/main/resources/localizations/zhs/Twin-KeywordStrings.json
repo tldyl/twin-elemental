@@ -62,5 +62,13 @@
     ],
     "PROPER_NAME": "昼夜",
     "DESCRIPTION": "昼：等价于 #y力量 。 NL 夜：等价于 #y敏捷 。 NL 每打出 #b12 张牌切换 #y昼夜 状态。"
+  },
+  {
+    "NAMES": [
+      "红月",
+      "red-moon"
+    ],
+    "PROPER_NAME": "红月",
+    "DESCRIPTION": "有 #y红月 的生物在本回合受到的 #y攻击 伤害增加 #y红月 的层数。"
   }
 ]

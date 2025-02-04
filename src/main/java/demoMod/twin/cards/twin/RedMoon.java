@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import demoMod.twin.TwinElementalMod;
 import demoMod.twin.enums.AttackEffectEnum;
-import demoMod.twin.enums.CardTagsEnum;
 import demoMod.twin.powers.RedMoonPower;
 
 public class RedMoon extends AbstractTwinCard {
@@ -24,13 +23,12 @@ public class RedMoon extends AbstractTwinCard {
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
 
-    private static final int COST = 2;
+    private static final int COST = 1;
 
     public RedMoon() {
         super(ID, NAME, TwinElementalMod.getResourcePath(IMG_PATH), COST, DESCRIPTION, TYPE, RARITY, TARGET);
-        this.baseDamage = 6;
-        this.baseMagicNumber = this.magicNumber = 6;
-        this.tags.add(CardTagsEnum.COPORATE);
+        this.baseDamage = 5;
+        this.baseMagicNumber = this.magicNumber = 5;
     }
 
     @Override
@@ -44,9 +42,6 @@ public class RedMoon extends AbstractTwinCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AttackEffectEnum.RED_MOON));
-        if (costForTurn == 0) {
-            addToBot(new ApplyPowerAction(m, p, new RedMoonPower(m, this.magicNumber)));
-        }
-        resetCoporateState();
+        addToBot(new ApplyPowerAction(m, p, new RedMoonPower(m, this.magicNumber)));
     }
 }

@@ -17,7 +17,7 @@ import com.megacrit.cardcrawl.vfx.combat.FireballEffect;
 import com.megacrit.cardcrawl.vfx.combat.FlameBarrierEffect;
 import demoMod.twin.TwinElementalMod;
 import demoMod.twin.enums.CardTagsEnum;
-import demoMod.twin.powers.RedMoonPower;
+import demoMod.twin.powers.RetainRedMoonPower;
 import demoMod.twin.stances.Blaze;
 
 public class FireWheel extends AbstractTwinCard {
@@ -54,6 +54,7 @@ public class FireWheel extends AbstractTwinCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (p.stance instanceof Blaze) {
             addToBot(new VFXAction(p, new FlameBarrierEffect(p.hb.cX, p.hb.cY), 0.3F));
+            addToBot(new ApplyPowerAction(p, p, new RetainRedMoonPower(p, 1)));
         }
         for (int i=0;i<3;i++) {
             addToBot(new AbstractGameAction() {
@@ -65,9 +66,6 @@ public class FireWheel extends AbstractTwinCard {
                         AbstractGameEffect effect = new FireballEffect(p.hb.cX, p.hb.cY, mo.hb.cX, mo.hb.cY);
                         effect.duration = 0.5F;
                         effect.startingDuration = 0.5F;
-                        if (p.stance instanceof Blaze) {
-                            addToTop(new ApplyPowerAction(mo, p, new RedMoonPower(mo, FireWheel.this.magicNumber)));
-                        }
                         addToTop(new ApplyPowerAction(mo, p, new VulnerablePower(mo, 1, false)));
                         addToTop(new DamageAction(mo, new DamageInfo(p, damage, damageTypeForTurn), AttackEffect.FIRE));
                         if (p.stance instanceof Blaze) {

@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import demoMod.twin.TwinElementalMod;
 import demoMod.twin.enums.CardTagsEnum;
 import demoMod.twin.helpers.DomainGenerator;
+import demoMod.twin.powers.RetainRedMoonPower;
 import demoMod.twin.vfx.ScreenOnFireEffect;
 
 import java.util.function.Supplier;
@@ -34,10 +35,9 @@ public class FantasyHell extends AbstractTwinCard {
 
     public FantasyHell() {
         super(ID, NAME, TwinElementalMod.getResourcePath(IMG_PATH), COST, DESCRIPTION, TYPE, RARITY, TARGET);
-        this.baseDamage = 3;
+        this.baseDamage = 2;
         this.baseMagicNumber = this.magicNumber = 6;
-        this.baseTraceAmount = this.traceAmount = 3;
-        this.tags.add(CardTagsEnum.DOMAIN);
+        this.baseTraceAmount = this.traceAmount = 2;
     }
 
     @Override
@@ -60,6 +60,6 @@ public class FantasyHell extends AbstractTwinCard {
         for (int i=0;i<this.magicNumber;i++) {
             addToBot(new DamageAllEnemiesAction(p, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.FIRE, true));
         }
-        addToBot(new ApplyPowerAction(p, p, getDomainEffect().get()));
+        addToBot(new ApplyPowerAction(p, p, new RetainRedMoonPower(p, this.baseTraceAmount)));
     }
 }

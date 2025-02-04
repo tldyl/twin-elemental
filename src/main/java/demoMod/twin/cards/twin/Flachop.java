@@ -1,7 +1,6 @@
 package demoMod.twin.cards.twin;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -12,7 +11,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import demoMod.twin.TwinElementalMod;
 import demoMod.twin.enums.AttackEffectEnum;
 import demoMod.twin.enums.CardTagsEnum;
-import demoMod.twin.powers.RedMoonPower;
 import demoMod.twin.stances.Blaze;
 
 public class Flachop extends AbstractTwinCard {
@@ -51,7 +49,6 @@ public class Flachop extends AbstractTwinCard {
             attackEffect = AttackEffectEnum.FLACHOP;
         }
         addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), attackEffect));
-        addToBot(new ApplyPowerAction(m, p, new RedMoonPower(m, this.magicNumber)));
         if (p.stance instanceof Blaze) {
             addToBot(new DrawCardAction(this.magicNumber));
         }

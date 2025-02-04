@@ -17,7 +17,7 @@ public class Yuusha extends AbstractTwinCard {
     public static final String IMG_PATH = "cards/Yuusha";
 
     private static final CardType TYPE = CardType.POWER;
-    private static final CardRarity RARITY = CardRarity.UNCOMMON;
+    private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.SELF;
 
     private static final int COST = 2;

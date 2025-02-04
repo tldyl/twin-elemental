@@ -9,10 +9,8 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import demoMod.twin.TwinElementalMod;
-import demoMod.twin.actions.BoostAction;
 import demoMod.twin.enums.AttackEffectEnum;
 import demoMod.twin.enums.CardTagsEnum;
-import demoMod.twin.stances.Blaze;
 
 public class Starmunicate extends AbstractTwinCard {
     public static final String ID = TwinElementalMod.makeID("Starmunicate");
@@ -47,9 +45,8 @@ public class Starmunicate extends AbstractTwinCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AttackEffectEnum.CROSS_STAR));
-        if (Blaze.switchedTimesThisTurn > 0) {
+        if (costForTurn == 0) {
             addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AttackEffectEnum.CROSS_STAR));
-            addToBot(new BoostAction());
         }
         resetCoporateState();
     }

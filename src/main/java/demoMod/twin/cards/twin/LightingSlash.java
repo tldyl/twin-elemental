@@ -5,7 +5,6 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -38,28 +37,24 @@ public class LightingSlash extends AbstractTwinCard {
 
     public LightingSlash() {
         super(ID, NAME, TwinElementalMod.getResourcePath(IMG_PATH), COST, DESCRIPTION, TYPE, RARITY, TARGET);
-        this.baseDamage = 6;
-        this.baseMagicNumber = this.magicNumber = 2;
+        this.baseDamage = 9;
         this.tags.add(CardTagsEnum.PREFER_BLAZE);
     }
 
     @Override
     protected Supplier<Boolean> getGlowCondition() {
-        return () -> AbstractDungeon.getMonsters().monsters.stream().anyMatch(m -> !m.isDeadOrEscaped() && m.hasPower(VulnerablePower.POWER_ID));
+        return () -> AbstractDungeon.getMonsters().monsters.stream().anyMatch(m -> !m.isDeadOrEscaped() && m.hasPower(VulnerablePower.POWER_ID)) && AbstractDungeon.player.stance instanceof Blaze;
     }
 
     @Override
     public Runnable getUpgradeAction() {
-        return () -> {
-            upgradeDamage(2);
-            upgradeMagicNumber(1);
-        };
+        return () -> upgradeDamage(3);
     }
 
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
         super.calculateCardDamage(mo);
-        if (mo.hasPower(VulnerablePower.POWER_ID)) {
+        if (mo.hasPower(VulnerablePower.POWER_ID) && AbstractDungeon.player.stance instanceof Blaze) {
             this.damage *= 2;
         }
     }
@@ -75,8 +70,5 @@ public class LightingSlash extends AbstractTwinCard {
             addToBot(new VFXAction(new AnimatedSlashEffect(m.hb.cX, m.hb.cY - 30.0F * Settings.scale, vector2.x, vector2.y, angle, 4.0F, Color.SKY, Color.BLUE)));
         }
         addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn)));
-        if (p.stance instanceof Blaze) {
-            addToBot(new DrawCardAction(this.magicNumber));
-        }
     }
 }

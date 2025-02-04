@@ -1,7 +1,9 @@
 package demoMod.twin.cards.twin;
 
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
+import com.megacrit.cardcrawl.actions.unique.ExpertiseAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
@@ -24,28 +26,24 @@ public class Butterfly extends AbstractTwinCard {
 
     public Butterfly() {
         super(ID, NAME, TwinElementalMod.getResourcePath(IMG_PATH), COST, DESCRIPTION, TYPE, RARITY, TARGET);
-        this.baseMagicNumber = this.magicNumber = 4;
+        this.baseMagicNumber = this.magicNumber = 5;
         this.exhaust = true;
     }
 
     @Override
     public Runnable getUpgradeAction() {
-        return () -> {
-            upgradeMagicNumber(1);
-            this.rawDescription = cardStrings.UPGRADE_DESCRIPTION;
-            this.initializeDescription();
-        };
+        return () -> upgradeMagicNumber(1);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int drawAmount = this.magicNumber;
-        int energyAmount = this.magicNumber;
-        drawAmount -= p.hand.size() - 1;
-        energyAmount -= p.hand.size() - 1;
-        if (drawAmount < 1) drawAmount = 1;
-        if (energyAmount < 1) energyAmount = 1;
-        addToBot(new DrawCardAction(drawAmount));
-        addToBot(new GainEnergyAction(energyAmount));
+        addToBot(new ExpertiseAction(p, this.magicNumber));
+        addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                addToTop(new GainEnergyAction(DrawCardAction.drawnCards.size()));
+                isDone = true;
+            }
+        });
     }
 }

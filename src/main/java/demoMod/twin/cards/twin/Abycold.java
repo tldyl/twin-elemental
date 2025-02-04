@@ -41,10 +41,7 @@ public class Abycold extends AbstractTwinCard {
 
     @Override
     public Runnable getUpgradeAction() {
-        return () -> {
-            upgradeDamage(3);
-            upgradeMagicNumber(1);
-        };
+        return () -> upgradeDamage(3);
     }
 
     @Override

@@ -48,14 +48,6 @@ public class DeathFreeze extends AbstractTwinCard {
     }
 
     @Override
-    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        if (!(p.stance instanceof Freeze)) {
-            this.cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[1];
-        }
-        return super.canUse(p, m) && p.stance instanceof Freeze;
-    }
-
-    @Override
     public Runnable getUpgradeAction() {
         return () -> {
             upgradeMagicNumber(1);
@@ -111,8 +103,10 @@ public class DeathFreeze extends AbstractTwinCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters.stream().filter(monster -> !monster.isDeadOrEscaped()).collect(Collectors.toList())) {
-            addToBot(new ApplyPowerAction(mo, p, new WeakPower(mo, this.magicNumber, false)));
+        if (p.stance instanceof Freeze) {
+            for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters.stream().filter(monster -> !monster.isDeadOrEscaped()).collect(Collectors.toList())) {
+                addToBot(new ApplyPowerAction(mo, p, new WeakPower(mo, this.magicNumber, false)));
+            }
         }
         addToBot(new ApplyPowerAction(p, p, getDomainEffect().get()));
     }

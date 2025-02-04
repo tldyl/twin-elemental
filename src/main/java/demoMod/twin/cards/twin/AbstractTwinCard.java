@@ -47,7 +47,7 @@ public abstract class AbstractTwinCard extends CustomCard {
     public void applyPowers() {
         super.applyPowers();
         AbstractPlayer p = AbstractDungeon.player;
-        if (p.hasPower(TracePower.POWER_ID)) {
+        if (p.hasPower(TracePower.POWER_ID) && hasTag(CardTagsEnum.DOMAIN)) {
             AbstractPower power = p.getPower(TracePower.POWER_ID);
             traceAmount = baseTraceAmount + power.amount;
         } else {

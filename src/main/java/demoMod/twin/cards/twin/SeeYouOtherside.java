@@ -6,7 +6,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import demoMod.twin.TwinElementalMod;
-import demoMod.twin.enums.CardTagsEnum;
 
 public class SeeYouOtherside extends AbstractTwinCard {
     public static final String ID = TwinElementalMod.makeID("SeeYouOtherside");
@@ -25,24 +24,24 @@ public class SeeYouOtherside extends AbstractTwinCard {
     public SeeYouOtherside() {
         super(ID, NAME, TwinElementalMod.getResourcePath(IMG_PATH), COST, DESCRIPTION, TYPE, RARITY, TARGET);
         this.baseBlock = 4;
-        this.baseMagicNumber = 4;
-        this.tags.add(CardTagsEnum.COPORATE);
+        this.baseMagicNumber = 2;
     }
 
     @Override
     public Runnable getUpgradeAction() {
         return () -> {
             upgradeBlock(2);
-            upgradeMagicNumber(2);
+            upgradeMagicNumber(1);
         };
+    }
+
+    @Override
+    public void checkCoporateState() {
+        this.baseBlock += this.magicNumber;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, p, this.block));
-        if (costForTurn == 0) {
-            this.baseBlock += this.magicNumber;
-        }
-        resetCoporateState();
     }
 }

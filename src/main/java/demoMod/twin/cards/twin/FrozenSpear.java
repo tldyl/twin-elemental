@@ -28,6 +28,7 @@ import demoMod.twin.enums.CardTagsEnum;
 import demoMod.twin.stances.Freeze;
 
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 
 public class FrozenSpear extends AbstractTwinCard {
     public static final String ID = TwinElementalMod.makeID("FrozenSpear");
@@ -46,7 +47,7 @@ public class FrozenSpear extends AbstractTwinCard {
 
     public FrozenSpear() {
         super(ID, NAME, TwinElementalMod.getResourcePath(IMG_PATH), COST, DESCRIPTION, TYPE, RARITY, TARGET);
-        this.baseDamage = 6;
+        this.baseDamage = 3;
         this.baseMagicNumber = this.magicNumber = 3;
         this.tags.add(CardTagsEnum.COPORATE);
         this.tags.add(CardTagsEnum.PREFER_FREEZE);
@@ -54,44 +55,41 @@ public class FrozenSpear extends AbstractTwinCard {
 
     @Override
     public Runnable getUpgradeAction() {
-        return () -> upgradeDamage(2);
+        return () -> upgradeDamage(1);
     }
 
     @Override
     public void applyPowers() {
         int weakAmount = 0;
-        if (AbstractDungeon.getMonsters().hoveredMonster != null) {
-            AbstractMonster hoveredMonster = AbstractDungeon.getMonsters().hoveredMonster;
-            if (hoveredMonster.hasPower(WeakPower.POWER_ID)) {
-                weakAmount = hoveredMonster.getPower(WeakPower.POWER_ID).amount;
+        for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters.stream().filter(monster -> !monster.isDeadOrEscaped()).collect(Collectors.toList())) {
+            if (mo.hasPower(WeakPower.POWER_ID)) {
+                weakAmount += mo.getPower(WeakPower.POWER_ID).amount;
             }
         }
-        if (AbstractDungeon.player.stance instanceof Freeze) {
-            this.baseDamage += weakAmount;
-        }
         super.applyPowers();
-        if (AbstractDungeon.player.stance instanceof Freeze) {
-            this.baseDamage -= weakAmount;
-        }
-        isDamageModified = this.baseDamage != this.damage;
+        this.rawDescription = cardStrings.DESCRIPTION;
+        this.rawDescription = this.rawDescription + String.format(cardStrings.EXTENDED_DESCRIPTION[0], weakAmount / 2);
+        this.initializeDescription();
     }
 
     @Override
     public void calculateCardDamage(AbstractMonster mo) {
         int weakAmount = 0;
-        if (mo != null) {
-            if (mo.hasPower(WeakPower.POWER_ID)) {
-                weakAmount = mo.getPower(WeakPower.POWER_ID).amount;
+        for (AbstractMonster m : AbstractDungeon.getMonsters().monsters.stream().filter(monster -> !monster.isDeadOrEscaped()).collect(Collectors.toList())) {
+            if (m.hasPower(WeakPower.POWER_ID)) {
+                weakAmount += m.getPower(WeakPower.POWER_ID).amount;
             }
         }
-        if (AbstractDungeon.player.stance instanceof Freeze) {
-            this.baseDamage += weakAmount;
-        }
         super.calculateCardDamage(mo);
-        if (AbstractDungeon.player.stance instanceof Freeze) {
-            this.baseDamage -= weakAmount;
-        }
-        isDamageModified = this.baseDamage != this.damage;
+        this.rawDescription = cardStrings.DESCRIPTION;
+        this.rawDescription = this.rawDescription + String.format(cardStrings.EXTENDED_DESCRIPTION[0], weakAmount / 2);
+        this.initializeDescription();
+    }
+
+    @Override
+    public void onMoveToDiscard() {
+        this.rawDescription = cardStrings.DESCRIPTION;
+        this.initializeDescription();
     }
 
     @Override
@@ -103,7 +101,15 @@ public class FrozenSpear extends AbstractTwinCard {
             AbstractDungeon.effectsQueue.add(new BorderLongFlashEffect(new Color(0.2F, 0.35F, 1.0F, 0.5F)));
             ReflectionHacks.setPrivateStatic(CollectorStakeEffect.class, "img", spearRegion);
             AtomicInteger count = new AtomicInteger(0);
-            for (int i=0;i<this.magicNumber;i++) {
+            int weakAmount = 0;
+            for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters.stream().filter(monster -> !monster.isDeadOrEscaped()).collect(Collectors.toList())) {
+                if (mo.hasPower(WeakPower.POWER_ID)) {
+                    weakAmount += mo.getPower(WeakPower.POWER_ID).amount;
+                }
+            }
+            for (int i=0;i<this.magicNumber + weakAmount / 2;i++) {
+                calculateCardDamage(m);
+                int damage = this.damage;
                 addToBot(new AbstractGameAction() {
                     @Override
                     public void update() {
@@ -122,8 +128,7 @@ public class FrozenSpear extends AbstractTwinCard {
                                 isDone = effect.isDone;
                                 if (isDone) {
                                     count.incrementAndGet();
-                                    calculateCardDamage(m);
-                                    addToTop(new DamageAction(m, new DamageInfo(p, FrozenSpear.this.damage, FrozenSpear.this.damageTypeForTurn), AbstractGameAction.AttackEffect.NONE));
+                                    addToTop(new DamageAction(m, new DamageInfo(p, damage, FrozenSpear.this.damageTypeForTurn), AbstractGameAction.AttackEffect.NONE));
                                     if (count.get() >= magicNumber) {
                                         ReflectionHacks.setPrivateStatic(CollectorStakeEffect.class, "img", ImageMaster.vfxAtlas.findRegion("combat/stake"));
                                     }

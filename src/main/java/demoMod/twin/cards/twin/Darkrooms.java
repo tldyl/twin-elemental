@@ -11,6 +11,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
+import com.megacrit.cardcrawl.powers.EnergizedPower;
 import demoMod.twin.TwinElementalMod;
 import demoMod.twin.enums.CardTagsEnum;
 import demoMod.twin.helpers.DomainGenerator;
@@ -29,19 +31,23 @@ public class Darkrooms extends AbstractTwinCard {
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
 
-    private static final int COST = 2;
+    private static final int COST = 1;
 
     public Darkrooms() {
         super(ID, NAME, TwinElementalMod.getResourcePath(IMG_PATH), COST, DESCRIPTION, TYPE, RARITY, TARGET);
-        this.baseMagicNumber = this.magicNumber = 1;
+        this.baseMagicNumber = this.magicNumber = 3;
         this.baseTraceAmount = this.traceAmount = 5;
         this.cardsToPreview = new VoidCard();
-        this.tags.add(CardTagsEnum.DOMAIN);
+        this.exhaust = true;
     }
 
     @Override
     public Runnable getUpgradeAction() {
-        return () -> this.upgradeTraceAmount(2);
+        return () -> {
+            this.rawDescription = cardStrings.UPGRADE_DESCRIPTION;
+            initializeDescription();
+            this.exhaust = false;
+        };
     }
 
     @Override
@@ -56,6 +62,7 @@ public class Darkrooms extends AbstractTwinCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new MakeTempCardInDiscardAction(this.cardsToPreview, 1));
-        addToBot(new ApplyPowerAction(p, p, getDomainEffect().get()));
+        addToBot(new ApplyPowerAction(p, p, new EnergizedPower(p, 3)));
+        addToBot(new ApplyPowerAction(p, p, new DrawCardNextTurnPower(p, this.magicNumber)));
     }
 }

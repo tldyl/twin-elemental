@@ -11,9 +11,11 @@ import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 import demoMod.twin.TwinElementalMod;
 import demoMod.twin.enums.CardTagsEnum;
 import demoMod.twin.helpers.DomainGenerator;
+import demoMod.twin.powers.RedMoonPower;
 import demoMod.twin.stances.Blaze;
 
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 public class BurningSky extends AbstractTwinCard {
     public static final String ID = TwinElementalMod.makeID("BurningSky");
@@ -31,7 +33,7 @@ public class BurningSky extends AbstractTwinCard {
 
     public BurningSky() {
         super(ID, NAME, TwinElementalMod.getResourcePath(IMG_PATH), COST, DESCRIPTION, TYPE, RARITY, TARGET);
-        this.baseMagicNumber = this.magicNumber = 9;
+        this.baseMagicNumber = this.magicNumber = 6;
         this.baseTraceAmount = this.traceAmount = 4;
         this.tags.add(CardTagsEnum.DOMAIN);
         this.tags.add(CardTagsEnum.PREFER_BLAZE);
@@ -47,13 +49,17 @@ public class BurningSky extends AbstractTwinCard {
 
     @Override
     public Runnable getUpgradeAction() {
-        return () -> upgradeMagicNumber(3);
+        return () -> upgradeMagicNumber(2);
     }
 
     @Override
     public Supplier<AbstractPower> getDomainEffect() {
         AbstractPlayer p = AbstractDungeon.player;
-        return () -> DomainGenerator.getDomain(this, p, () -> addToBot(new ApplyPowerAction(p, p, new VigorPower(p, this.magicNumber))), cardStrings.EXTENDED_DESCRIPTION[0], this.magicNumber);
+        return () -> DomainGenerator.getDomain(this, p, () -> {
+            for (AbstractMonster m : AbstractDungeon.getMonsters().monsters.stream().filter(m -> !m.isDeadOrEscaped()).collect(Collectors.toList())) {
+                addToBot(new ApplyPowerAction(m, p, new RedMoonPower(m, this.magicNumber)));
+            }
+        }, cardStrings.EXTENDED_DESCRIPTION[0], this.magicNumber);
     }
 
     @Override

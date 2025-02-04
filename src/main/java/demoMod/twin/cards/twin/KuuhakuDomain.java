@@ -37,7 +37,6 @@ public class KuuhakuDomain extends AbstractTwinCard {
     public KuuhakuDomain() {
         super(ID, NAME, TwinElementalMod.getResourcePath(IMG_PATH), COST, DESCRIPTION, TYPE, RARITY, TARGET);
         this.tags.add(CardTagsEnum.DOMAIN);
-        this.isInnate = true;
         this.exhaust = true;
         this.baseTraceAmount = this.traceAmount = 2;
     }

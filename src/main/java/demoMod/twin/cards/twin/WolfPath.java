@@ -1,11 +1,9 @@
 package demoMod.twin.cards.twin;
 
-import basemod.BaseMod;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.GameActionManager;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -23,9 +21,9 @@ public class WolfPath extends AbstractTwinCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String IMG_PATH = "cards/WolfPath";
 
-    private static final CardType TYPE = CardType.SKILL;
+    private static final CardType TYPE = CardType.ATTACK;
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
-    private static final CardTarget TARGET = CardTarget.NONE;
+    private static final CardTarget TARGET = CardTarget.ENEMY;
 
     private static final int COST = 1;
 
@@ -33,56 +31,41 @@ public class WolfPath extends AbstractTwinCard {
         super(ID, NAME, TwinElementalMod.getResourcePath(IMG_PATH), COST, DESCRIPTION, TYPE, RARITY, TARGET);
         this.tags.add(CardTagsEnum.PREFER_FREEZE);
         this.tags.add(CardTagsEnum.PREFER_BLAZE);
+        this.baseDamage = 8;
+        this.baseBlock = 8;
+        this.baseMagicNumber = this.magicNumber = 2;
+        this.returnToHand = true;
     }
 
     @Override
     public Runnable getUpgradeAction() {
-        return () -> upgradeBaseCost(0);
+        return () -> upgradeMagicNumber(2);
+    }
+
+    @Override
+    public void applyPowers() {
+        super.applyPowers();
+        this.target = AbstractDungeon.player.stance instanceof Blaze ? CardTarget.ENEMY : CardTarget.SELF;
+    }
+
+    @Override
+    public void triggerWhenDrawn() {
+        this.target = AbstractDungeon.player.stance instanceof Blaze ? CardTarget.ENEMY : CardTarget.SELF;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (p.stance instanceof Blaze) {
-            addToBot(new DrawCardAction(BaseMod.MAX_HAND_SIZE - p.hand.size(), new AbstractGameAction() {
-                @Override
-                public void update() {
-                    for (AbstractCard card : p.hand.group) {
-                        addToTop(new AbstractGameAction() {
-                            @Override
-                            public void update() {
-                                if (card.type != CardType.ATTACK) {
-                                    AbstractDungeon.player.hand.moveToDiscardPile(card);
-                                    card.triggerOnManualDiscard();
-                                    GameActionManager.incrementDiscard(false);
-                                }
-                                isDone = true;
-                            }
-                        });
-                    }
-                    isDone = true;
-                }
-            }));
+            addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HEAVY));
+            this.baseBlock += this.magicNumber;
         } else {
-            addToBot(new GainEnergyAction(p.energy.energyMaster));
-            addToBot(new AbstractGameAction() {
-                @Override
-                public void update() {
-                    for (AbstractCard card : p.hand.group) {
-                        addToTop(new AbstractGameAction() {
-                            @Override
-                            public void update() {
-                                if (card.type != CardType.SKILL) {
-                                    AbstractDungeon.player.hand.moveToDiscardPile(card);
-                                    card.triggerOnManualDiscard();
-                                    GameActionManager.incrementDiscard(false);
-                                }
-                                isDone = true;
-                            }
-                        });
-                    }
-                    isDone = true;
-                }
-            });
+            addToBot(new GainBlockAction(p, p, this.block));
+            this.baseDamage += this.magicNumber;
         }
+        this.cost = 1;
+        if (this.cost != this.costForTurn) {
+            isCostModified = true;
+        }
+        this.costForTurn = 1;
     }
 }

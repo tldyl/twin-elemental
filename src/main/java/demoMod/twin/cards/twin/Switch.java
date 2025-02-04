@@ -1,12 +1,13 @@
 package demoMod.twin.cards.twin;
 
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import demoMod.twin.TwinElementalMod;
-import demoMod.twin.actions.SwitchLeaderAction;
+import demoMod.twin.cards.tempCards.Cooperate;
 
 public class Switch extends AbstractTwinCard {
     public static final String ID = TwinElementalMod.makeID("Switch");
@@ -25,16 +26,18 @@ public class Switch extends AbstractTwinCard {
     public Switch() {
         super(ID, NAME, TwinElementalMod.getResourcePath(IMG_PATH), COST, DESCRIPTION, TYPE, RARITY, TARGET);
         this.baseBlock = 8;
+        this.baseMagicNumber = this.magicNumber = 1;
+        this.cardsToPreview = new Cooperate();
     }
 
     @Override
     public Runnable getUpgradeAction() {
-        return () -> upgradeBlock(3);
+        return () -> upgradeMagicNumber(1);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, p, this.block));
-        addToBot(new SwitchLeaderAction());
+        addToBot(new MakeTempCardInHandAction(this.cardsToPreview, this.magicNumber));
     }
 }

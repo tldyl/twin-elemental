@@ -3,15 +3,16 @@ package demoMod.twin.cards.twin;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.WeakPower;
+import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.vfx.combat.WeightyImpactEffect;
 import demoMod.twin.TwinElementalMod;
 import demoMod.twin.enums.CardTagsEnum;
 import demoMod.twin.stances.Freeze;
@@ -33,10 +34,8 @@ public class KingIceBound extends AbstractTwinCard {
 
     public KingIceBound() {
         super(ID, NAME, TwinElementalMod.getResourcePath(IMG_PATH), COST, DESCRIPTION, TYPE, RARITY, TARGET);
-        this.tags.add(CardTagsEnum.COPORATE);
         this.tags.add(CardTagsEnum.PREFER_FREEZE);
-        this.baseDamage = 12;
-        this.baseMagicNumber = this.magicNumber = 2;
+        this.baseDamage = 24;
     }
 
     @Override
@@ -50,8 +49,7 @@ public class KingIceBound extends AbstractTwinCard {
     @Override
     public Runnable getUpgradeAction() {
         return () -> {
-            upgradeDamage(4);
-            upgradeMagicNumber(1);
+            upgradeDamage(8);
             this.portrait = UPGRADE_IMG;
             this.textureImg = TwinElementalMod.getResourcePath("cards/KingIceBound+_attack.png");
         };
@@ -59,16 +57,20 @@ public class KingIceBound extends AbstractTwinCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HEAVY));
-        addToBot(new ApplyPowerAction(m, p, new WeakPower(m, this.magicNumber, false)));
-        if (p.stance instanceof Freeze) {
-            for (AbstractCard card : p.drawPile.group) {
-                if (card instanceof AbstractTwinCard) {
-                    AbstractTwinCard twinCard = (AbstractTwinCard) card;
-                    twinCard.checkCoporateState();
+        if (m != null) {
+            this.addToBot(new VFXAction(new WeightyImpactEffect(m.hb.cX, m.hb.cY)));
+        }
+        addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+        if (p.stance instanceof Freeze && m != null) {
+            int energyToGain = 0;
+            for (AbstractPower power : m.powers) {
+                if (power.type == AbstractPower.PowerType.DEBUFF) {
+                    energyToGain++;
                 }
             }
+            if (energyToGain > 0) {
+                addToBot(new GainEnergyAction(energyToGain));
+            }
         }
-        resetCoporateState();
     }
 }
